@@ -1,0 +1,70 @@
+%---------------------------------------------------------------------
+%
+%                      TeXiS_certif.tex
+%
+%---------------------------------------------------------------------
+%
+% Contiene el capítulo de la certificacion.
+%
+% Se crea como un capítulo sin numeración.
+%
+%---------------------------------------------------------------------
+
+%%%
+%% COMANDO PARA CREAR LA CERTIFICACIÓN.
+%% CONTIENE TODO EL CÓDIGO LaTeX
+%%%
+\newcommand{\makeCertif}{
+
+
+% Ponemos el marcador en el PDF
+%\ifpdf
+%\pdfbookmark{Certificación}{certificacion}
+%\fi
+
+
+%%
+%% Creamos la certificacion
+%%
+
+\thispagestyle{empty}\mbox{}
+
+El Dr. D. \directorPortadaVal, Profesor Titular de Universidad, del Área de \areaVal~ de la \facultadVal~ de la \institucionVal, 
+
+\vspace{1.5cm} Certifica que, \vspace{1.5cm}
+
+D. \autorPortadaVal, \titulacionVal, ha realizado en
+el \departamentoVal~ de la \institucionVal, bajo su dirección, el trabajo de
+investigación correspondiente a su Tesis Doctoral titulada: \vspace{1.5cm}
+
+\begin{center}
+\emph{\tituloPortadaVal}
+\end{center}
+
+\vspace{1.5cm} Revisado el presente trabajo, estima que puede ser
+presentado al tribunal que ha de juzgarlo, y autoriza la
+presentación de esta Tesis Doctoral en la \institucionVal.
+
+\vspace{4cm}
+\begin{tabular}{ccc}
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  Fdo.: Dr. \directorPortadaVal \\  %& \hspace{2cm} & Fdo.: \codirectorVal \\
+\end{tabular}
+\vspace{1.5cm}
+\begin{flushright}
+\lugarPublicacionVal, \fechaPublicacionVal
+\end{flushright}
+
+\newpage
+\thispagestyle{empty}\mbox{}
+%\endinput
+
+} % \newcommand{\makeCertif}
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:

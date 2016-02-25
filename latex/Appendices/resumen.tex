@@ -1,0 +1,260 @@
+%---------------------------------------------------------------------
+%
+%                          Resumen
+%
+%---------------------------------------------------------------------
+%
+% resumen.tex
+% Copyright 2015 Dr. Francisco J. Pulido
+%
+% This file belongs to the PhD titled "New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems", distributed under the Creative Commons Licence Attribution-NonCommercial-NoDerivs 3.0, available in http://creativecommons.org/licenses/by-nc-nd/3.0/. The complete PhD dissertation is freely accessible from http://www.lcc.uma.es/~francis/
+%
+% This thesis has been written adapting the TeXiS template, a LaTeX template for writting thesis and other documents. The complete TeXiS package can be obtained from http://gaia.fdi.ucm.es/projects/texis/. TeXis is distributed under the same conditions of the LaTeX Project Public License (http://www.latex-project.org/lppl.txt). The complete license is available in http://creativecommons.org/licenses/by-sa/3.0/legalcode
+%
+%---------------------------------------------------------------------
+
+%---------------------------------------------------------------------
+%
+% Contiene el capítulo del resumen.
+%
+% Se crea como un capítulo sin numeración.
+%
+%---------------------------------------------------------------------
+
+\chapter{Resumen}
+\cabeceraEspecial{Resumen}
+\label{Resumen}
+
+\begin{FraseCelebre}
+\begin{Frase}
+Si supiese qué es lo que estoy haciendo, no lo llamaría investigación, ¿verdad?
+\end{Frase}
+\begin{Fuente}
+Albert Einstein (1879-1955)
+\end{Fuente}
+\end{FraseCelebre}
+
+El problema del camino más corto (SPP) es uno de los más antiguos y extensamente estudiados en los campos de Inteligencia Artificial (AI) e Investigación Operativa (OR), el cual consiste en encontrar el camino entre dos nodos de un grafo tal que la suma de los pesos de los arcos que lo componen sea mínima. Sin embargo, los problemas en la vida real suelen implicar múltiples, y normalmente contradictorios, criterios. Cuando múltiples objetivos deben ser optimizados simultáneamente el concepto de una sola solución óptima pierde su validez, en su lugar, un conjunto de soluciones eficientes o Pareto-óptimas definen el equilibrio óptimo entre los objetivos bajo consideración.
+
+El problema de búsqueda multicriterio es la extensión natural del problema del camino más corto cuando se consideran múltiples criterios. El problema de búsqueda multicriterio es computacionalmente más complejo que el que involucra un solo criterio. El número de expansiones de etiquetas puede crecer exponencialmente con la profundidad de la solución, incluso para el caso de dos objetivos \citep{hansen1979}. Con el supuesto de  costes enteros acotados y un número fijo de objetivos el problema se convierte en tratable para grafos de tamaño polinomial (por ejemplo, véase \citep{Mandow2009, Muller-Hannemann2006}).
+
+Un gran variedad de aplicaciones prácticas en diferentes campos pueden ser abordadas como problemas de búsqueda multicriterio, como la planificación de la trayectoria de robots \citep{Wu2011}, el transporte de materiales peligrosos \citep{caramiaetal2010}, la planificación de rutas en diferentes contextos \citep{Jozefowiez2008}, el transporte público \citep{Raith2009} o la calidad del servicio en redes \citep{craveirinha2009}.
+
+La programación por metas es una de las técnicas de decisión multicriterio más exitosas utilizadas en la optimización de metas multiobjetivo. En esta tesis aplicamos una de sus variantes al problema de búsqueda multicriterio. Así, nuestro objetivo es resolver el problema de búsqueda multicriterio con preferencias lexicográficas basadas en metas. Para ello, proponemos un nuevo algoritmo llamado \lexgo, un algoritmo exacto de etiquetado que devuelve el subconjunto de caminos óptimos de Pareto que satisfacen un conjunto de metas lexicográficas, o el subconjunto de mínima desviación con respecto a las metas si estas no se pueden satisfacer completamente. Adicionalmente, se demuestran la admisibilidad de \lexgo \ y la propiedad de  expandir sólo un subconjunto de las etiquetas expandidas por un algoritmo de búsqueda completa multicriterio.
+
+Puesto que los requisitos temporales en lugar de los espaciales son el factor limitante para el rendimiento de los algoritmos de búsqueda multicriterio, proponemos una nueva técnica, llamada \emph{t-discarding}, para disminuir el número y dimensionalidad de las comprobaciones de dominancia durante la búsqueda. La aplicación del \emph{t-discarding} a los algoritmos previamente estudiados, \namoa \ y \lexgo, da lugar a dos nuevos algoritmos eficientes en tiempo, \namoate \ y \lexgote, respectivamente.
+
+Todas las alternativas algorítmicas han sido testadas en dos escenarios, mallas aleatorias y mapas de carreteras. La evaluación experimental muestra la efectividad de \lexgo \ en ambos bancos de prueba, así como reducciones espectaculares en los requisitos temporales de ambos algoritmos con respecto a sus contrapartidas que utilizan las técnicas de comprobación de dominancia estándar. 
+
+%-------------------------------------------------------------------
+\section{Objetivos}
+\label{Resumen:sec:objectives}
+%-------------------------------------------------------------------
+
+Los principales objetivos de esta tesis doctoral pueden ser esbozados de la siguiente manera: 
+
+\begin{enumerate}
+
+	\item \textbf{Abordar el problema de búsqueda multicriterio con metas.} El primer objetivo de esta tesis es presentar la descripción del problema de búsqueda multicriterio y concretamente, el problema de búsqueda multicriterio con preferencias basadas en metas. Describiremos dos enfoques para abordar este problema.
+	
+	\item \textbf{Desarrollar un nuevo algoritmo para preferencias basadas en metas lexicográficas.} El principio de optimalidad se cumple para los problemas multiobjetivo del camino más corto, pero desafortunadamente no se cumple para las preferencias basadas en metas lexicográficas. Para abordar el problema de búsqueda multicriterio con un algoritmo específicamente diseñado para metas, concentraremos nuestros esfuerzos en el desarrollo de un nuevo algoritmo basado en una política de selección de etiquetas.
+	
+    \item \textbf{Probar formalmente la corrección y eficiencia de este nuevo algoritmo.} Otro objetivo de esta tesis es complementar el nuevo algoritmo desarrollado con análisis formales de su corrección, así como su eficiencia con respecto a un algoritmo óptimo que realiza una búsqueda completa multiobjetivo.
+
+    \item \textbf{Estudio de posibles mejoras a algoritmos multiobjetivo del camino más corto.} Nuestros esfuerzos también se centrarán en general en la mejora de algoritmos multiobjetivo del camino más corto. De manera más específica, nuestro objetivo es proponer una nueva técnica para mejorar el rendimiento en tiempo de ejecución de algoritmos de etiquetado multiobjetivo del camino más corto con límites superiores consistentes. 
+	
+	\item \textbf{Demostrar formalmente la corrección de la técnica eficiente en tiempo.}
+Desarrollaremos formalmente la aplicación de la técnica eficiente en tiempo al nuevo algoritmo propuesto con preferencias basadas en metas, así como la aplicación a \namoa. En particular, demostraremos teóricamente la corrección de ambos algoritmos empleando la técnica de reducción de la dimensionalidad. 
+
+	\item \textbf{Realizar una evaluación empírica de todas las alternativas algorítmicas propuestas.} Finalmente, el último objetivo de esta tesis es proporcionar una evaluación extensiva de todos los algoritmos propuestos. Para ello, emplearemos bancos de pruebas generados aleatoriamente y escenarios realistas.
+\end{enumerate}
+
+%-------------------------------------------------------------------
+\section{Contribuciones}
+\label{Resumen:sec:contributions}
+%-------------------------------------------------------------------
+
+Las contribuciones de esta tesis se enumeran de forma resumida a continuación,
+
+\begin{enumerate}
+	\item \textbf{Descripción del problema de búsqueda multicriterio basado en metas.} En primer lugar, describimos la técnica de programación por metas dentro de la disciplina de la teoría de la decisión, así como la búsqueda en grafos multicriterio dentro de los problemas de optimización multiobjetivo. Dado este marco de trabajo, describiremos y definiremos formalmente el problema de búsqueda en grafos multicriterio basados en metas y los diferentes enfoques algorítmicos para abordarlo. 
+
+	\item \textbf{Un nuevo algoritmo de búsqueda multicriterio.} Presentamos \lexgo (\astar \ con metas lexicográficas), un nuevo algoritmo exacto de etiquetado multicriterio con preferencias basadas en metas. \lexgo \ devuelve el subconjunto de caminos óptimos de Pareto que satisfacen un conjunto de metas lexicográficas, o el subconjunto de caminos con menor desviación con respecto a estas metas si no pueden ser completamente satisfechas.
+
+	\item \textbf{Caracterización formal de la admisibilidad y eficiencia de \lexgo.}
+Demostramos teóricamente la admisibilidad de \lexgo, es decir, \lexgo \ es un algoritmo exacto y devuelve el conjunto completo de soluciones a un problema, así como su eficiencia, es decir, el número de etiquetas expandidas por el algoritmo decrece con límites superiores más informados con respecto a una búsqueda multicriterio completa.
+
+	\item \textbf{Proponemos la técnica \emph{t-discarding}.} Presentamos una nueva técnica que reduce los requisitos temporales de los algoritmos de búsqueda multiobjetivo. Esta técnica es aplicable a algoritmos de etiquetado multicriterio basados en \astar. Su clave reside al comprobar la dominancia de un conjunto de etiquetas sobre una sola etiqueta. En lugar de realizar las comprobaciones de dominancia teniendo en cuenta $n$ criterios, lo haremos reduciendo todos los vectores implicados a $n-1$ criterios. Además, cuando uno de los criterios no se considera, el tamaño de los conjuntos de vectores no dominados también se reduce drásticamente. Así podemos usar conjuntos reducidos de vectores truncados en lugar de los originales para descartar alternativas. Todo esto es posible gracias a las propiedades formales de las funciones consistentes de cotas inferiores. 
+
+    \item \textbf{Proporcionar la caracterización formal de la técnica \emph{t-discarding}.} Aplicamos t-discarding a \namoa \ y \lexgo, y presentamos dos nuevos algoritmos, \namoate \ y \lexgote. Probaremos la corrección de \namoate \ y \lexgote, evaluaremos su eficiencia y analizaremos su rendimiento.
+
+	\item \textbf{Evaluación empírica de las nuevas contribuciones.} Dos escenarios principales van a ser usados para comprobar la efectividad de nuestros nuevos algoritmos: mallas aleatorias y problemas realistas en mapas de carreteras. En ellos, presentamos reducciones importantes de los requisitos temporales para problemas con tres objetivos. Con nuestro conocimiento a día de la presentación de esta tesis, los resultados mostrados en mapas de carreteras representan los problemas de búsqueda con tres objetivos más difíciles resueltos hasta la fecha. 
+\end{enumerate}
+
+%-------------------------------------------------------------------
+\section{Resumen de los capítulos de la Tesis}
+\label{Resumen:sec:summaryChapters}
+%-------------------------------------------------------------------
+
+A continuación, se presenta un resumen de cada capítulo de esta tesis. Los Capítulos \ref{chapIntroduction} al \ref{chapMultiObjTestBeds} se integran dentro de la parte dedicada a la motivación y fundamentos de esta tesis, los Capítulos \ref{chapContributions} al \ref{chapEmpiricalAnalysisRoadMaps} dentro de las contribuciones y finalmente, el Capítulo \ref{ChapConclusions} muestra las conclusiones y lineas futuras de esta investigación. Puesto que ya hemos hablado en las secciones anteriores de los objetivos y contribuciones expuestos en el primer capítulo de esta tesis, comenzamos este resumen en el segundo capítulo y hablaremos sobre las conclusiones y líneas futuras de trabajo en las dos siguiente secciones.
+
+%-------------------------------------------------------------------
+\subsection{Búsqueda Multicriterio en Grafos: Problemas y Algoritmos}
+\label{Resumen:subsec:chapMultiObjAlg}
+%-------------------------------------------------------------------
+
+El Capítulo \ref{chapMultiObjAlg} de esta tesis presenta el problema de Búsqueda Multicriterio con preferencias lexicográficas basadas en metas. Para ello, se introduce el popular método de Programación por Metas así como sus variantes en la Sección \ref{chapMultiObjAlg:sec:GP}. Concretamente, la Programación por Metas es una de las técnicas más exitosas de Decisión Multicriterio. \citet{Rosenthal1983} categorizó en tres las formulaciones disponibles de la Programación por Metas. En esta tesis, ponemos énfasis en la variante que agrupa los criterios en niveles de prioridad definidos por el decisor. Dentro de cada nivel, las metas proporcionadas también tienen pesos, que establecen la importancia de cada criterio dentro del nivel. 
+
+El problema de Búsqueda Multicriterio ha sido estudiado extensivamente por las comunidades de Inteligencia Artificial e Investigación Operativa. En la Sección \ref{chapMultiObjAlg:sec:MSP} de este capítulo se proporcionan algunas definiciones relevantes y la formulación del problema. También se enumeran algunos de sus campos de aplicación, como son la vigilancia robotizada \citep{dellefaveetal2009}, la planificación de la trayectoria de robots \citep{Wu2011}, el transporte de materiales peligrosos \citep{caramiaetal2010}, la planificación de satélites \citep{Gabrel2002}, la planificación de rutas en diferentes contextos \citep{Jozefowiez2008}, el transporte público \citep{Raith2009} o la calidad del servicio en redes \citep{craveirinha2009}. Por último, se repasan las propiedades formales de las funciones multicriterio de límites inferiores. 
+
+En la Sección \ref{chapMultiObjAlg:sec:MSP} se enumeran las tres categorías de algoritmos de búsqueda multicriterio \citep{climacopascoal2012}. Nos centramos en dos, en primer lugar, los algoritmos \emph{a priori} son aquellos en que las preferencias del decisor son proporcionadas con anterioridad, y en segundo lugar, los algoritmos \emph{a posteriori} son aquellos que no poseen ningún tipo de información del decisor con anterioridad a la ejecución del algoritmo, por lo que recuperan todas las soluciones eficientes para que sea el decisor con posterioridad quien tome la decisión. 
+
+Dentro de este sección también se describirá el algoritmo \namoa \citep{Mandow2010}, que se engloba en la categoría de algoritmos \emph{a posteriori}, y que se empleará en esta tesis como referencia para evaluar las posteriores contribuciones. Además describiremos la función de cotas inferiores propuesta por \citet{Tung1992}, que emplearemos en todos los algoritmos estudiados en esta tesis.
+
+%-------------------------------------------------------------------
+\subsection{Bancos de pruebas para búsqueda multicriterio}
+\label{Resumen:subsec:chapMultiObjTestBeds}
+%-------------------------------------------------------------------
+
+El Capítulo \ref{chapMultiObjTestBeds} está dividido en tres secciones diferenciadas. En primer lugar, en la Sección \ref{chapMultiObjTestBeds:sec:Antecedents} se revisan, sin entrar en un gran grado de detalle, los bancos de pruebas usados en la literatura para evaluar el rendimiento de la búsqueda multicriterio. Complementariamente, se enuncian los dos factores claves en la evaluación del rendimiento de algoritmos, la reproducibilidad y la equidad de las pruebas, así como los diversos factores que pueden influir en los resultados de la evaluación, como el tamaño y forma del grafo de búsqueda, número de arcos, profundidad de la solución o el número de criterios, por nombrar algunos. 
+
+En la Sección \ref{chapMultiObjTestBeds:sec:Benchmarks} se describen en detalle los bancos de pruebas empleados en esta tesis doctoral. Primeramente, se detallan los parámetros de generación de los bancos de pruebas basados en mallas aleatorias, como el número de nodos y arcos, las profundidades de solución consideradas o el número de costes eficientes resultantes. Posteriormente, se detallan los bancos de pruebas sobre mapas de carreteras. En concreto, se han empleado veinte problemas aleatorios sobre los mapas de Nueva York y Vermont, con el objetivo de minimizar alternativamente la distancia, tiempo y coste del camino planificado. El mapa de Nueva York corresponde al 9th Dimacs Implementation Challenge: Shortest Path\footnote{\url{http://www.dis.uniroma1.it/challenge9/}}, un banco de pruebas basado en datos reales de los mapas de carreteras de Estados Unidos, donde los arcos representan carreteras y los nodos las intersecciones entre carreteras. El mapa de Vermont fue obtenido del UA Census 2000 TIGER/Line y está disponible en el mismo sitio web.
+
+Para concluir, en la Sección \ref{chapMultiObjTestBeds:sec:Performance} se define la importancia de los bancos de pruebas utilizados en esta tesis con respecto a los empleados en la literatura. Tanto por lo que se refiere a los bancos de pruebas sobre mallas, como a los bancos de pruebas sobre mapas de carreteras, nuestra evaluación experimental es de una dificultad lo suficientemente elevada como para considerarse adecuada en este contexto. 
+
+%-------------------------------------------------------------------
+\subsection{Contribuciones}
+\label{Resumen:subsec:chapContributions}
+%-------------------------------------------------------------------
+
+El Capítulo \ref{chapContributions} de esta tesis doctoral hace un revisión de las contribuciones aportadas por este trabajo. \lexgo, nuestra proposición algorítmica para resolver problemas de búsqueda multicriterio basados en metas lexicográficas, es presentado en la Sección \ref{chapMultiObjAlg:subsec:lexgo}. Esta sección incluye las condiciones especiales de poda y filtrado de \lexgo, así como un ejemplo de uso del algoritmo. Aquí también se establece la definición de solución eficiente con respecto a un conjunto de metas lexicográficas agrupadas en niveles de prioridad, así como una nueva regla de poda para descartar etiquetas por su desviación con respecto a estas metas.
+
+Por otro lado, otra de las grandes contribuciones de esta tesis se describe en este capítulo. La Sección  \ref{chapMultiObjAlg:sec:Time-efficient-MSalg} muestra la técnica t-discarding para acelerar las comprobaciones de dominancia de un conjunto de etiquetas. Esta técnica ya fue empleada para mejorar los requisitos espaciales de la búsqueda frontera multicriterio, y en este trabajo la consideramos para mejorar considerablemente los requisitos temporales de los algoritmos de búsqueda multicriterio, como veremos en los capítulos de evaluación experimental.
+
+Las dos últimas secciones de este capítulo repasan la aplicación de la técnica de t-discarding a los algoritmos \namoa \ y \lexgo, dando lugar a los algoritmos, \namoate \ y \lexgote, respectivamente.
+
+%-------------------------------------------------------------------
+\subsection{Análisis formal de los algoritmos de búsqueda multicriterio}
+\label{Resumen:subsec:chapFormalAnalysis}
+%-------------------------------------------------------------------
+
+El principal propósito del Capítulo \ref{chapFormalAnalysis} de esta tesis es proporcionar un análisis formal de los algoritmos ideados como resultado de esta tesis, además de encontrar la mejor alternativa algorítmica cuando las preferencias de un decisor son modeladas basándose en unas metas de satisfacción y estas son ordenadas en niveles de prioridad con pesos dentro de cada nivel. 
+
+Dos posibilidades surgen ante tal problema, la primera y más obvia, es el cálculo de todo el conjunto de soluciones eficientes o no dominadas a través de un algoritmo de búsqueda multicriterio, como por ejemplo \namoa, y posteriormente extraer el subconjunto de soluciones que satisfacen esas metas. La segunda alternativa consiste en concentrar el esfuerzo de la búsqueda solo en aquellas soluciones que son óptimas con respectos a las metas, como se realiza por ejemplo en \lexgo, es decir, descartar desde las primeras fases de la búsqueda aquellos caminos en el grafo que no nos llevarán a soluciones que sean eficientes con respecto a las metas.
+
+La otra gran contribución de esta tesis, la técnica de t-discarding, puede ser aplicada a los procesos de poda y filtrado de los algoritmos nombrados anteriormente sin afectar su admisibilidad. Las propiedades de estos nuevos algoritmos, que utilizan la técnica de reducción de la dimensionalidad, son analizadas en este capítulo. 
+
+Las propiedades formales analizadas en los algoritmos de búsqueda multicriterio presentados en esta tesis son: 
+
+\begin{description}
+    \item[Admisibilidad] 
+    
+Se prueba formalmente la admisibilidad de todos los algoritmos estudiados. Las pruebas formales de admisibilidad de \namoa \ fueron presentadas en \citet{Mandow2005, Mandow2010}. Las propiedades que prueban la admisibilidad de \lexgo \ son descritas en la Sección  \ref{chapFormalAnalysis:sec:analysisLEXGO}. Finalmente, la técnica de t-discarding empleada por \namoate \ y \lexgote \ se analiza en la Sección  \ref{chapFormalAnalysis:sec:analysisNAMOATE}. 
+
+    \item[Eficiencia] 
+    
+El método estándar para medir la eficiencia de los algoritmos de búsqueda multicriterio es el número de etiquetas exploradas. Un estudio reciente muestra que \namoa \ es óptimo con respecto a esta medida cuando se emplea una función consistente de límites inferiores \citep{Mandow2010}. La misma propiedad puede ser aplicada a \lexgo, puesto que siempre expande un subconjunto de las etiquetas expandidas por \namoa (ver Sección  \ref{chapFormalAnalysis:sec:efficiencyLexgo} para mayor detalle de esta demostración). En cuanto a los algoritmos que emplean la técnica de t-discarding, el conjunto de etiquetas expandidas por las versiones básicas y las que usan la técnica de la reducción de la dimensionalidad se demuestran equivalentes, puesto que las nuevas reglas de poda y filtrado descartan exactamente las mismas etiquetas que los procesos originales de poda y filtrado (para más detalles consultar el Teorema \ref{teo:teo}).
+
+\namoa \ ha demostrado expandir un número igual o menor de etiquetas cuando se emplea un función consistente de límites inferiores \citep{Mandow2010}. De manera equivalente por las razones explicadas anteriormente, \lexgo \ y las variantes algorítmicas introducidas en esta tesis también comparten esta propiedad. 
+
+Adicionalmente, introducimos otras importantes medidas de rendimiento para los algoritmos de búsqueda multicriterio: el número de comparaciones de dominancia y la cardinalidad de los conjuntos de etiquetas no dominadas que se utilizan para descartar nuevas alternativas. Estos nuevos parámetros son la clave del impresionante rendimiento de los algoritmos que emplean t-discarding, y serán formalmente analizados en la Sección \ref{chapFormalAnalysis:sec:efficiencyNamoate}.
+
+\end{description}
+
+%-------------------------------------------------------------------
+\subsection{Evaluación empírica en mallas aleatorias}
+\label{Resumen:subsec:chapEmpiricalAnalysisGrids}
+%-------------------------------------------------------------------
+
+El Capítulo \ref{chapEmpiricalAnalysisGrids} está dividido en seis subsecciones y tiene como principal objetivo la evaluación de las alternativas algorítmicas propuestas sobre un escenario de problemas aleatorios en mallas. La Sección \ref{chapEmpiricalAnalysis:sec:grids} describe la configuración de los experimentos. Por un lado, el estudio experimental analiza los siguientes aspectos para la comparación de \namoa \ y \lexgo \ como función de la profundidad de la solución:
+
+\begin{itemize}
+	\item El número de etiquetas expandidas.
+	\item Los requisitos temporales.
+    \item El porcentaje relativo de soluciones eficientes con respecto a las metas. El conjunto de soluciones devueltas es comparado con el tamaño completo del conjunto de soluciones no dominadas del problema.
+\end{itemize}  
+
+Por otro lado, para analizar el rendimiento de la técnica de t-discarding, se analizan los siguientes aspectos como función de la profundidad de la solución:
+
+\begin{itemize}
+    \item El tamaño relativo de los conjuntos de etiquetas truncadas con respecto a los conjuntos completos de \namoa.
+	 \item El porcentaje de etiquetas podadas y filtradas sobre el total de etiquetas descartadas.
+     \item Los requisitos temporales de los algoritmos que emplean la técnica de t-discarding  (\namoate \ y \lexgote) con respecto a sus algoritmos de referencia (\namoa \ y \lexgo).
+\end{itemize} 
+
+Los experimentos se dividen en dos clases, que consideran la minimización simultánea de tres criterios agrupados en dos niveles. Las metas se definen con respecto a los puntos óptimos y nadir del espacio de costes vectoriales. Así, la primera clase propone cinco tipos de experimentos donde las metas son gradualmente más flexibles, desde situarlas en el punto óptimo, hasta estar localizadas en el punto nadir, y en la que los dos niveles de prioridad comparten el mismo nivel de dificultad de las metas. En la segunda clase de experimentos, los valores de las metas del primer nivel se dejan fijos y se parametrizan gradualmente las metas correspondientes al segundo nivel. 
+
+Las Secciones 2 a 5 de este capítulo analizan las diferentes comparaciones entre algoritmos. Los resultados se pueden ver esquematizados en la Sección \ref{Resumen:sec:conclusions}. Por último, se realiza un resumen de todos los resultados obtenidos en esta evaluación experimental en la Sección \ref{chapEmpiricalAnalysis:sec:summarygridsfinal}.  
+
+%-------------------------------------------------------------------
+\subsection{Evaluación empírica en mapas de carreteras}
+\label{Resumen:subsec:chapEmpiricalAnalysisRoadMaps}
+%-------------------------------------------------------------------
+
+El Capítulo \ref{chapEmpiricalAnalysisRoadMaps} de esta tesis analiza el rendimiento en mapas de carreteras de los algoritmos estudiados. El banco de pruebas utilizado es el 9th Dimacs Implementation Challenge. Este concurso estaba compuesto de doce mapas de carreteras de diferentes tamaños.
+
+Los mapas originales de DIMACS proporcionan dos criterios de coste diferentes: \textit{distancia} y \textit{tiempo de trayecto}. Un coste adicional fue propuesto en \citet{Machuca2011} calculando el \textit{coste económico del trayecto}. Los experimentos contenidos en este capítulo consideran la minimización simultánea de estos tres atributos (consultar la Sección \ref{chapMultiObjTestBeds:subsec:RoadMaps} para ver con mayor detalle la descripción de este banco de pruebas).
+
+La evaluación experimental sobre el mapa de Nueva York se realizó con los veinte primeros problemas de los propuestos en \citet{Machuca2012}. El conjunto experimental sobre el mapa de Vermont se definió de manera análoga. Una explicación más detallada de la generación de estos problemas puede ser encontrada en la Sección  \ref{chapMultiObjTestBeds:subsec:RoadMaps}. El tiempo límite de ejecución para cada problema se estableció en 8 horas. 
+
+Con respecto a las dos clases de problemas analizados, estos están definidos de manera análoga a los problemas del Capítulo \ref{chapEmpiricalAnalysisGrids} sobre mallas aleatorias. 
+
+
+%-------------------------------------------------------------------
+\section{Conclusiones}
+\label{Resumen:sec:conclusions}
+%-------------------------------------------------------------------
+
+Las principales conclusiones de esta tesis doctoral pueden ser enumeradas de la siguiente forma:
+
+\begin{enumerate}
+
+    \item \textbf{Proponemos un nuevo algoritmo de búsqueda multicriterio, \lexgo.} El nuevo algoritmo exacto que presentamos devuelve el conjunto de caminos óptimos de Pareto que satisface un conjunto de metas lexicográficas agrupadas en niveles de prioridad, o el subconjunto con la desviación mínima con respecto a las metas, si estas no pueden ser completamente satisfechas. \lexgo \ también se acompaña de demostraciones formales de su correctitud. 
+    
+    \item \textbf{\lexgo \ es más eficiente que una búsqueda completa de todas las soluciones óptimas de Pareto.} \lexgo \ demuestra formalmente expandir un subconjunto de las etiquetas expandidas por una búsqueda multicriterio sin preferencias. Puesto que el número de etiquetas expandidas no corresponde a un indicador de confianza completamente fiel del rendimiento de los algoritmos de búsqueda multicriterio, hemos comparado \lexgo \ y \namoa \ en bancos de pruebas con mallas aleatorias y mapas de carreteras. En ambos casos, se observa una pequeña sobrecarga de tiempo en \lexgo \ cuando el conjunto completo de soluciones de Pareto satisface todas las metas. Por otra parte, el rendimiento relativo de \lexgo \ sobre \namoa \ mejora progresivamente con la reducción del conjunto de soluciones que satisface las metas, concretamente, los requisitos temporales de \lexgo \ son de alrededor de un orden de magnitud menor cuando las metas se satisfacen para algunas de las soluciones de Pareto, y de hasta cuatro órdenes de magnitud menor cuando las metas no pueden ser completamente satisfechas.  
+
+    \item \textbf{La política de selección de etiquetas afecta el rendimiento temporal.} Se han realizado experimentos con dos políticas de selección de etiquetas, el orden lexicográfico y la agregación lineal, sobre los algoritmos \lexgo \ y \namoa. Se observa que \namoalin \ es aproximadamente un 50\% más rápido que \namoalex \ en mallas. Sin embargo, \lexgolin \ solo es más eficiente que \lexgolex \ cuando un alto porcentaje de las soluciones Pareto óptimas satisfacen todas las metas. Con respecto a los experimentos en los que las metas no pueden ser completamente satisfechas, \lexgolex \ y \lexgolin \ son prácticamente equivalentes puesto que no se realiza filtrado.   
+    
+    \item \textbf{Proponemos una nueva técnica de reducción de dimensionalidad (t-discarding).} El rendimiento temporal, más que el rendimiento de memoria, se ha mostrado como el factor limitante en el número de problemas que pueden ser resueltos con búsqueda multicriterio. Así, presentamos una técnica simple, pero muy efectiva, para reducir el número de etiquetas pertenecientes a los conjuntos responsables de descartar nuevas alternativas. Esta técnica se aplica bajo condiciones razonables: el uso de una función consistente como límite inferior para el algoritmo y el orden lexicográfico para seleccionar alternativas de la cola de ABIERTOS. Cabe la pena reseñar que el cálculo de una función consistente de límites inferiores puede ser es una tarea simple gracias a \citet{Tung1992}, que propusieron usar el punto ideal como límite inferior para la búsqueda multicriterio.
+    
+    \item \textbf{T-discarding se utiliza ampliamente para descartar etiquetas.} Se emplean conjuntos de etiquetas cerradas, $G_{cl}(n)$, y etiquetas pertenecientes a caminos solución, COSTS, para realizar la poda (\emph{poda en cerrados}) y el proceso de filtrado, respectivamente. Sin embargo, los conjuntos de etiquetas abiertas, $G_{op}(n)$, no pueden beneficiarse de nuestra técnica de mejora de las comprobaciones de dominancia (\emph{poda en abiertos}). Por lo tanto, se han lanzado experimentos para medir el porcentaje de etiquetas que son descartadas en los procesos de \emph{poda en abiertos}, \emph{poda en cerrados} y filtrado. En ninguno de los experimentos realizados, ni sobre mallas ni sobre mapas de carreteras, el proceso de \emph{poda en abiertos} fue responsable del descarte de más del 10\% de las etiquetas. De esta manera, podemos asegurar que la técnica de t-discarding es altamente utilizada por los algoritmos de búsqueda multicriterio para descartar nuevas alternativas y que, por lo tanto, tendrá un alto grado de impacto en el rendimiento temporal del algoritmo.
+    
+    \item \textbf{T-discarding realiza comprobaciones de dominancia sobre conjuntos reducidos de etiquetas.} El tamaño relativo de los conjuntos de etiquetas truncadas sobre el tamaño de los conjuntos originales es teóricamente desconocido. Sin embargo, hemos realizados una evaluación experimental y este tamaño en la práctica es alrededor de dos órdenes de magnitud menor para los problemas más difíciles sobre mallas y de dos a tres órdenes de magnitud para los problemas de mayor dificultad sobre mapas de carreteras. Por otra parte, la ventaja relativa de los algoritmos que emplean la técnica de t-discarding se incrementa gradualmente con el tamaño del problema, por lo que esta contribución puede efectivamente extender el conjunto de problemas de búsqueda multicriterio que pueden ser resueltos en la práctica.
+    
+    \item \textbf{\namoate \ reduce los requisitos temporales de \namoa.} La técnica de t-discarding puede ser aplicada a algoritmos exactos de búsqueda multicriterio como \namoa. En problemas aleatorios sobre mallas el coeficiente de mejora para los problemas de mayor dificultad fue de 8.94 para \namoate, la versión eficiente en tiempo de \namoa \ que emplea t-discarding, sobre \namoalin, la versión estudiada más eficiente de \namoa. En mapas de carreteras el factor de mejora sobre \namoalin \ fue de 26.55, es decir, \namoate \ resolvió el conjunto experimental en el 3.77\% del tiempo necesario por \namoalin. Para el conjunto experimental de Nueva York, un conjunto de problemas realistas de elevada dificultad con tres criterios simultáneos, \namoate \ también amplió el número de problemas resueltos por \namoalin, del 20\% al 70\% de los problemas propuestos.
+    
+    \item \textbf{\lexgote \ reduce los requisitos temporales de \lexgo \ en algunos casos.} Al contrario que \namoate, \lexgote, la versión eficiente de \lexgo \ con t-discarding, no puede beneficiarse completamente de esta técnica. Aquellos casos donde las metas no pueden ser completamente satisfechas, el orden lexicográfico impone un orden de expansión de etiquetas que no es compatible con la corrección de la mencionada técnica. Sin embargo, \lexgote \ puede ser empleado mientras todas las metas puedan ser satisfechas, lo cual, de hecho, sucede en los problemas de mayor dificultad, y lograr coeficientes de mejora en los tiempos de ejecución sobre \lexgo \ de 8.31 y 21.72 para los problemas más difíciles sobre mallas y mapas de carreteras, respectivamente. 
+    
+    \item \textbf{Una comparativa final entre \namoate \ y \lexgote.} Por último, se ha llevado a cabo una evaluación experimental de las alternativas estudiadas que han demostrado ser más eficientes. En problemas aleatorios sobre mallas, la inclusión de la técnica de t-discarding ha conseguido que \namoate \ sea la mejor alternativa cuando un alto porcentaje de las soluciones eficientes del problema satisfacen las metas del decisor. Por otro lado, \lexgote \ es la mejor alternativa cuando las metas no pueden ser completamente satisfechas o una pequeña porción del conjunto de soluciones eficientes es devuelto. Los resultados en problemas de mapas de carreteras son compatibles, aunque se debe puntualizar que cuando las metas pueden ser satisfechas existió un número significativo de problemas que fueron resueltos por \namoate \ que no pudieron ser resueltos por \lexgote \ dentro del límite temporal.   
+      
+\end{enumerate}
+
+
+%-------------------------------------------------------------------
+\section{Trabajo Futuro}
+\label{Resumen:sec:futurework}
+%-------------------------------------------------------------------
+
+Esta tesis doctoral ha realizado contribuciones, en varios campos, con nuevos algoritmos y técnicas de optimización. Estas contribuciones también plantean al mismo tiempo nuevas líneas de investigación, donde los enfoques actuales pueden ser efectivamente mejorados. Las siguientes líneas merecen ser investigadas con posterioridad a la lectura de esta tesis:
+
+\begin{itemize}
+
+	\item La evaluación experimental llevada a cabo en esta tesis ha remarcado la importancia de la política de selección de etiquetas en los requisitos temporales de algoritmos de búsqueda multicriterio. La determinación de una política óptima sería una contribución deseable y merece un estudio más profundo.
+	
+	\item El estudio y desarrollo de estructuras de datos más eficientes para almacenar los conjuntos de etiquetas abiertas y cerradas, así como la cola de alternativas, son investigaciones en curso. Todos los algoritmos presentados en esta tesis podrían beneficiarse de implementaciones más eficientes de estas estructuras de datos.
+
+	\item \lexgo \ puede ser extendido para usar otro modelos de programación por metas u otras fórmulas para medir la desviación con respecto a las metas. Sin embargo, necesitaríamos probablemente desarrollar nuevas reglas de poda y/o filtrado para cada caso particular, con el objetivo de mejorar su eficiencia. 
+	
+    \item Comprobar la eficacia de la técnica de t-discarding en otros algoritmos de búsqueda multicriterio con límites inferiores. Hemos aplicado t-discarding a \namoa, pero podría ser aplicado a otros algoritmos para reducir sus requisitos temporales.  
+	
+	\item Tanto \namoa \ como \lexgo \ devuelven el conjunto de todas las soluciones no dominadas (y que satisfacen las metas en el caso de \lexgo). Ya hemos podido comprobar en nuestros experimentos que aquellos problemas de mayor dificultad que buscan la frontera de Pareto completa llevan aparejados altos requisitos temporales. Sin embargo, hay otras técnicas de decisión multicriterio que buscan solo una solución eficiente, como es el caso de la búsqueda compromiso. Algunas de las conclusiones alcanzadas en esta tesis pueden ser útiles y extensibles a otros modelos de búsqueda multicriterio.
+
+    \item Aplicar t-discarding a problemas con más de tres criterios simultáneos. Teóricamente, la mejora relativa debería ser incluso mayor que en los experimentos mostrados en esta tesis. Sin embargo, estaremos probablemente acotados a resolver problemas sobre escenarios artificiales o problemas realistas sobre grafos de menor tamaño, debido principalmente a la extraordinaria dificultad que entrañaría resolver problemas significativamente grandes con más de tres criterios.
+
+	\item La búsqueda multicriterio sobre mapas de carreteras es un tema muy popular durante los últimos años. Puesto que el tiempo medio de consulta para los problemas de camino más corto de un solo objetivo se ha reducido al orden de microsegundos, la evolución natural es la resolución de problemas que involucren la optimización de más de un criterio simultáneamente. Las técnicas avanzadas de optimización aplicadas al problema con un solo objetivo, como los grafos multinivel \citep{schulzetal2002} o la contracción de jerarquías \citep{Geisberger2008} representan posibilidades para la búsqueda multicriterio que merecen una investigación más profunda. Por ejemplo, técnicas de preprocesamiento como la contracción de jerarquías requieren realizar una búsqueda bidireccional multicriterio. De hecho, este es otro campo de investigación de interés del autor de esta tesis \citep{Pulido2011,Pulido2012}, por lo que su aplicación sería uno de los siguientes desarrollos a realizar.
+
+	\item Por último, una linea de investigación recurrente es la identificación de nuevos dominios potenciales de aplicación para la Búsqueda Multicriterio, así como la combinación con otras disciplinas con las que enfocar el problema desde diversas perspectivas.
+
+\end{itemize}
+
+\endinput

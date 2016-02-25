@@ -1,0 +1,100 @@
+%---------------------------------------------------------------------
+%
+% Chapter 8: Conclusions and Future Work
+%
+%---------------------------------------------------------------------
+%
+% ChapConclusions.tex
+% Copyright 2015 Dr. Francisco J. Pulido
+%
+% This file belongs to the PhD titled "New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems", distributed under the Creative Commons Licence Attribution-NonCommercial-NoDerivs 3.0, available in http://creativecommons.org/licenses/by-nc-nd/3.0/. The complete PhD dissertation is freely accessible from http://www.lcc.uma.es/~francis/
+%
+% This thesis has been written adapting the TeXiS template, a LaTeX template for writting thesis and other documents. The complete TeXiS package can be obtained from http://gaia.fdi.ucm.es/projects/texis/. TeXis is distributed under the same conditions of the LaTeX Project Public License (http://www.latex-project.org/lppl.txt). The complete license is available in http://creativecommons.org/licenses/by-sa/3.0/legalcode
+%
+%---------------------------------------------------------------------
+
+\chapter{Conclusions and Future Work}
+\label{ChapConclusions}
+%
+\begin{FraseCelebre}
+\begin{Frase}
+Time is really the only capital that any human being has and the thing that he can least afford to waste or lose.
+\end{Frase}
+\begin{Fuente}
+Thomas Edison (1847-1931)
+\end{Fuente}
+\end{FraseCelebre}
+%
+%\begin{resumen}
+%...
+%\end{resumen}
+
+Multicriteria Decision Making (MCDM) is a branch of Operations Research that considers multiple criteria in decision-making environments. Goal Programming is a branch of MCDM that models preferences using goals, i.e. establishing target values over a set of attributes. The Multicriteria Search Problem (MSP) is the natural extension for the multiobjective case of the Shortest Path Problems, which are one of the most extensively studied problems in Artificial Intelligence and Operations Research. New developments in these fields are of practical importance in current research.
+
+The main goals of this thesis are to analyze the use of goal-based preferences in Multicriteria Shortest Path Problems, and provide new techniques and algorithms framed in this field. In particular, we are concerned with exact techniques where the preferences of the decision maker (DM) are modeled into levels of pre-emptive importance. Within each level, one or more targets are defined as the expectations of the DM and weights characterize the importance of the criteria. 
+
+In the literature, there is a general agreement that labeling multicriteria search algorithms are frequently the best choice to solve MSP \citep{skriverandersen2000,Raith2009,Raith2009a}. Moreover, two strategies can be used in these algorithms, node-selection and label-selection, and the latter has been repeatedly proved to be more efficient in label-setting algorithms \citep{Paixao2007,PerezdelaCruz2013}. Furthermore, the use of lower bound functions has been shown as a great advantage in the efficiency of these algorithms \citep{Mandow2010, Machuca2012a}. Thus, under the framework of lexicographic goal-based preferences we have analyzed two different strategies. The first one is to calculate the whole set of efficient solutions to the problem and extract the satisfactory solutions a posteriori. \namoa \ is included in these algorithms. The second one is to employ the goals given by the DM to bound the area of interesting solutions. The main goal of our new devised algorithm, \lexgo, which falls in this second category, is to achieve improvements over the efficiency of \namoa \ in the calculation of this set of efficient solutions according to the goals.
+
+Time has been shown as the limiting factor in the performance of multicriteria search algorithms. The majority of the time effort is devoted to check dominance against set of labels and thereby discard new generated alternatives. Our new proposed dimensionality reduction technique, called t-discarding, speeds up the processes of pruning and filtering, which are responsible of discarding new paths by comparing to partial and full paths, respectively.  
+
+The new dimensionality reduction technique can be used to improve the time requirements of labeling multicriteria search algorithms. In particular, we introduced \namoate \ and \lexgote \ as the versions of the algorithms previously analyzed that employ the dimensionality reduction technique. Finally, we perform extensive benchmarking to all the algorithms proposed over two scenarios, random grids and road maps problems. 
+
+In summary, a new exact label-setting multicriteria search algorithm is proposed to deal with MSP with lexicographic goal-based preferences and improve the performance of the full search. In addition, a new technique to speed up the processes of discarding new alternatives is also proposed, as well as formally and practically applied. Finally, empirical analyses test all the algorithmic alternatives. 
+
+%-------------------------------------------------------------------
+\section{Conclusions}
+\label{ChapConclusions:sec:conclusions}
+%-------------------------------------------------------------------
+
+The main conclusions of this doctoral dissertation can be enumerated as follows:
+
+\begin{enumerate}
+
+    \item \textbf{\lexgo, a new multicriteria search algorithm has been proposed.} Multiobjective search algorithms benefit from the principle of optimality, i.e. an optimal path is made up of optimal subpaths. Regrettably, this property does not hold for lexicographic goal-based preferences. We have introduced a new exact label-setting algorithm that returns the subset of Pareto-optimal paths that satisfy a set of lexicographic goals grouped in pre-emptive priority levels, or the subset that minimizes deviation from goals if these cannot be fully satisfied. Along with \lexgo, it has been proposed a specific pruning condition that allows to reduce the number of paths explored in goal-based search. We have also provided formal proofs on the correctness of the new pruning procedure and \lexgo.  
+
+    \item \textbf{\lexgo \ is more efficient than a full Pareto search.} \lexgo \ is theoretically proved to expand a subset of the labels expanded by the full Pareto search. Since the number of expanded labels is not the only relevant factor in the analysis of multicriteria search algorithms, we compared \lexgo \ and \namoa \ over random grids and road maps problems. In both cases, a small time overhead can be observed for \lexgo \ when the full Pareto frontier satisfies the goals, and the relative performance of \lexgo \ over \namoa \ improves progressively whenever the set of efficient solutions is reduced. Elsewhere  in the test sets, \lexgo \ achieves important reductions in time requirements of about one order of magnitude when goals are satisfied for some Pareto solutions, and up to four orders of magnitude whenever goals can not be fully satisfied.  
+    
+    \item \textbf{The label selection policy has an important impact on time performance.} We have conducted experiments with two different label selection policies, lexicographic and linear aggregation, over \namoa \ and \lexgo. It can be observed that \namoalin \ is approximately 50\% faster than \namoalex / in random grids. The comparison between \lexgolex \ and \lexgolin \ is however, not that straightforward. \lexgolin \ is only faster than \lexgolex \ when a high percentage of the Pareto frontier is returned, and slower whenever a reduced number of solutions satisfy all goals. When goals cannot be satisfied, \lexgolex \ and \lexgolin \ show a very similar performance.
+    
+    \item \textbf{A new dimensionality reduction technique, t-discarding, is proposed.} Time rather than space is the limiting factor to increase the number of Multiobjective Search Problems that can be practically solved. Thus, we have devised a simple but very effective technique to decrease the number of labels belonging to the sets in charge of discarding new alternatives. This technique is applied under reasonable circumstances: when a consistent lower bound function is employed along with the algorithm and a lexicographic order is used to select alternatives from OPEN. 
+    
+    \item \textbf{t-discarding is extensively used to discard labels.} We employ sets of closed labels, $G_{cl}(n)$, and full solution paths, COSTS, to perform pruning (cl-pruning) and filtering processes, respectively. Nonetheless, sets of partial open labels, $G_{op}(n)$,  can not benefit from this technique to speed up dominance checks (op-pruning). Therefore, we launched experiments to measure the percentage of op-pruned, cl-pruned and filtered labels over the total number of discarded labels. Neither in the experiments over random grids nor in the experiments over road maps op-pruning was employed in more than 10\% of the cases. Then, we can ensure t-discarding is highly applied to discard new alternatives.
+    
+    \item \textbf{t-discarding checks dominance against reduced sets of labels.} Relative size of the sets of truncated labels over the original sets is theoretically unknown. However, in practice, an experimental evaluation was conducted and this size was around two orders of magnitude smaller for the difficult grid problems and about two to three orders for difficult road maps problems. Moreover, the relative advantage of t-discarding is incremented gradually with problem size, hence, this new contribution can effectively extends the set of Multicriteria Search Problems that can be practically solved.   
+    
+    \item \textbf{\namoate \ reduces \namoa \ time requirements.} The t-discarding technique can be applied to exact multicriteria search algorithms like \namoa. In random grid problems, the speed-up for the most difficult problems was 8.94 by \namoate \ over \namoalin, the fastest studied version of \namoa. In road maps problems, the speed-up for the most difficult problem solved by \namoalin \ was 26.55, i.e. \namoate \ solved the problem in 3.77\% of the time needed by \namoalin. \namoate \ also extended the number of solved problems from 4 out of 20 by \namoalin \ to 14 out of 20 in a very difficult set of realistic problems with three criteria.
+    
+    \item \textbf{\lexgote \ reduces standard \lexgo \ time requirements in some cases.} The t-discarding technique requires the lexicographical selection of evaluation vectors. This imposed lexicographic order in \lexgote \ makes those cases where the goals cannot be satisfied incompatible with the correctness of t-discarding. However, \lexgote \ can benefit from the use of t-discarding when goals can be satisfied, which indeed are the most difficult problems, and achieve speed-ups of up to 8.31 and 21.72 for the most difficult random grid and road map problems, respectively. 
+    
+    \item \textbf{A comparative between \namoate \ and \lexgote.} Finally, we have conducted an experimental evaluation of the most successful alternatives studied. In random grids, the inclusion of the t-discarding technique makes \namoate \ be the alternative to choose whenever goals can be satisfied, specially, when a higher percentage of the non-dominated solutions satisfy the goals. \lexgote \ is the best alternative whenever goals can not be fully satisfied or a smaller portion of the Pareto frontier is returned. 
+
+In road maps problems, the results are compatible but significantly different. It must be pointed out that $k_1 = 0.25$ represents an extreme case of bad performance for \lexgote. Thus, in class I experiments, \namoate \ outperforms \lexgote \ when $k_1 = 1$ and $k_1 = 0.25$, and \lexgote \ has a better performance when $k_1 = \{0.75, 0.5, 0\}$. In class II experiments, the majority of \lexgote \ experiments perform faster than \namoate \ experiments. When goals could be satisfied there existed a significant number of problems that were solved by \namoate \ and could not be solved within the time limit by \lexgote.
+      
+\end{enumerate}
+
+%-------------------------------------------------------------------
+\section{Future Work}
+\label{ChapConclusions:sec:futurework}
+%-------------------------------------------------------------------
+
+This doctoral dissertation has contributed new algorithms and techniques. These contributions have also raised new future lines of research where current developments can be effectively improved. The following lines may justify further investigation: 
+
+\begin{itemize}
+
+	\item The experimental evaluation conducted in this thesis has remarked the importance of the label selection policy for time performance. The determination of an optimal policy is a desirable issue for a deeper study.  
+	
+	\item The study and development of more efficient data structures to store the sets of open and closed labels, as well as the queue of alternatives, is a current research. All the algorithms presented in this thesis could benefit from more efficient implementations of these data structures.
+
+	\item Two important formal analyses could be carried out regarding the optimality of \lexgo \ when used with consistent lower bounds. The first one, research the possibility that \lexgo \ is optimal in its class of exact goal-based algorithms according to the number of labels expanded. The second one, investigate theoretically the possibility that \lexgo \ expands an equal or smaller number of labels when using more informed lower bound functions.
+
+	\item \lexgo \ can be extended to use other GP models or other formulas to measure the deviation from goals. New pruning and/or filtering rules will probably need to be developed for each particular case, in order to enhance their efficiency.
+	
+    \item Apply t-discarding to other multicriteria search algorithms with lower bounds. We have applied the t-discarding technique to \namoa, but it can be applied to a significant number of algorithms to reduce their time requirements.  
+	
+	\item Both \namoa \ and \lexgo \ return the set of all non-dominated (or goal-optimal for \lexgo) solutions. In difficult problems seek for the whole set of non-dominated solutions leads to high runtime requirements. However, there are other multicriteria techniques that seek only for a single efficient solution, as Compromise Search. Some of the conclusions reported here, like the performance of selection orders or the importance of dominance checks in runtime, can be useful to extend other multicriteria decision models.
+	
+	\item Multicriteria search in road maps is becoming more popular in the last few years. Since the query time for single-objective shortest path problems is in the order of microseconds, the natural evolution is the resolution of problems that involve more than one criterion. The advanced optimization techniques applied to the single-objective problem, like multilevel graphs \citep{schulzetal2002} or contraction hierarchies \citep{Geisberger2008} represent possibilities for multicriteria search which deserve further research. For instance, preprocessing techniques like contraction hierarchies would require a multicriteria bidirectional search. In fact, this is another field of research of the author \citep{Pulido2011,Pulido2012}, hence, its application is of his great interest.   
+
+	\item Finally, a recurrent line of research is to identify new potential domains to apply multicriteria search, as well as the combination with other disciplines to approach MSP from a different perspective.
+
+\end{itemize}	

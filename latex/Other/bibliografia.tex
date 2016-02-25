@@ -1,0 +1,67 @@
+%---------------------------------------------------------------------
+%
+%                          Bibliography
+%
+%---------------------------------------------------------------------
+%
+% bibliografia.tex
+% Copyright 2015 Dr. Francisco J. Pulido
+%
+% This file belongs to the PhD titled "New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems", distributed under the Creative Commons Licence Attribution-NonCommercial-NoDerivs 3.0, available in http://creativecommons.org/licenses/by-nc-nd/3.0/. The complete PhD dissertation is freely accessible from http://www.lcc.uma.es/~francis/
+%
+% This thesis has been written adapting the TeXiS template, a LaTeX template for writting thesis and other documents. The complete TeXiS package can be obtained from http://gaia.fdi.ucm.es/projects/texis/. TeXis is distributed under the same conditions of the LaTeX Project Public License (http://www.latex-project.org/lppl.txt). The complete license is available in http://creativecommons.org/licenses/by-sa/3.0/legalcode
+%
+%---------------------------------------------------------------------
+
+%---------------------------------------------------------------------
+%
+% Fichero  que  configura  los  parámetros  de  la  generación  de  la
+% bibliografía.  Existen dos  parámetros configurables:  los ficheros
+% .bib que se utilizan y la frase célebre que aparece justo antes de la
+% primera referencia.
+%
+%---------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definición de los ficheros .bib utilizados:
+% \setBibFiles{<lista ficheros sin extension, separados por comas>}
+% Nota:
+% Es IMPORTANTE que los ficheros estén en la misma línea que
+% el comando \setBibFiles. Si se desea utilizar varias líneas,
+% terminarlas con una apertura de comentario.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setBibFiles{%
+Tesis%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definición de la frase célebre para el capítulo de la
+% bibliografía. Dentro normalmente se querrá hacer uso del entorno
+% \begin{FraseCelebre}, que contendrá a su vez otros dos entornos,
+% un \begin{Frase} y un \begin{Fuente}.
+%
+% Nota:
+% Si no se quiere cita, se puede eliminar su definición (en la
+% macro setCitaBibliografia{} ).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setCitaBibliografia{
+%\begin{FraseCelebre}
+%\begin{Frase}
+%
+%\end{Frase}
+%\begin{Fuente}
+%
+%\end{Fuente}
+%\end{FraseCelebre}
+%}
+
+%%
+%% Creamos la bibliografia
+%%
+%\makeBib
+
+\def\titBib{Bibliography}
+
+\makeBibTopic
+
+

@@ -1,0 +1,33 @@
+%---------------------------------------------------------------------
+%
+%                          Part Contributions
+%
+%---------------------------------------------------------------------
+%
+% PartContributions.tex
+% Copyright 2015 Dr. Francisco J. Pulido
+%
+% This file belongs to the PhD titled "New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems", distributed under the Creative Commons Licence Attribution-NonCommercial-NoDerivs 3.0, available in http://creativecommons.org/licenses/by-nc-nd/3.0/. The complete PhD dissertation is freely accessible from http://www.lcc.uma.es/~francis/
+%
+% This thesis has been written adapting the TeXiS template, a LaTeX template for writting thesis and other documents. The complete TeXiS package can be obtained from http://gaia.fdi.ucm.es/projects/texis/. TeXis is distributed under the same conditions of the LaTeX Project Public License (http://www.latex-project.org/lppl.txt). The complete license is available in http://creativecommons.org/licenses/by-sa/3.0/legalcode
+%
+%---------------------------------------------------------------------
+
+\partTitle{Contributions}
+
+\partDesc{
+The second part of this thesis describes our contributions to the field of multiobjective graph search algorithms with preferences based on goals. This comprises the formal and empirical analyses performed through this research work. This part is organized as follows:
+
+\begin{itemize}
+    \item Chapter \ref{chapContributions} introduces some of the contributions of this dissertation. Prior to presenting \lexgo, our new label-setting multicriteria search algorithm with goal-based preferences, we introduce new definitions concerning lexicographic preferences and a new pruning rule devised for lexicographic preferences. These are presented along with \lexgo \ in Section \ref{chapMultiObjAlg:subsec:lexgo}. 
+
+A new dimensionality reduction technique that speeds up the time performance of exact multicriteria search algorithms is described in Section \ref{chapMultiObjAlg:sec:Time-efficient-MSalg}. The new algorithms, \namoate \ and \lexgote, based on the application of this technique, are presented in Section \ref{chapMultiObjAlg:subsec:namoate} and \ref{chapMultiObjAlg:subsec:lexgote}, respectively. 
+
+    \item Chapter \ref{chapFormalAnalysis} gives a formal analysis of the multiobjective algorithms considered in this thesis. Section \ref{chapFormalAnalysis:sec:analysisNAMOA} reminds the formal properties of \namoa. The formal properties of \lexgo \ are introduced in Section \ref{chapFormalAnalysis:sec:analysisLEXGO} and it is formally proved that labels expanded by \lexgo \ are always a subset of the labels expanded by \namoa. The t-discarding method is proved to be theoretically correct and that any admissible multiobjective search algorithm will remain to be admissible when this technique is applied. More precisely, the formal properties of \namoate \ and \lexgote, the versions of \namoa \ and \lexgo \ applying t-discarding, are presented in Sections \ref{chapFormalAnalysis:sec:analysisNAMOATE} and \ref{chapFormalAnalysis:sec:analysisLexgote}, respectively. 
+    
+    \item Chapters \ref{chapEmpiricalAnalysisGrids} and \ref{chapEmpiricalAnalysisRoadMaps} describe the empirical evaluation of the algorithms introduced in this thesis. These are conducted over random grids and realistic road map problems, respectively. First, the space and runtime performance of \lexgo \ over \namoa \ is evaluated, and second, the time requirements of algorithms with t-discarding, i.e. \namoate \ and \lexgote \ over their counterparts which use the standard dominance checks. Finally, a summary for each experiment analyzes the relative performance of all tested algorithms. 
+\end{itemize}
+
+}
+
+\makepart

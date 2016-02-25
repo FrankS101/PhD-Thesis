@@ -1,0 +1,246 @@
+%---------------------------------------------------------------------
+%
+% Chapter 3: Benchmarks
+%
+%---------------------------------------------------------------------
+%
+% ChapMultiObjTestBeds.tex
+% Copyright 2015 Dr. Francisco J. Pulido
+%
+% This file belongs to the PhD titled "New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems", distributed under the Creative Commons Licence Attribution-NonCommercial-NoDerivs 3.0, available in http://creativecommons.org/licenses/by-nc-nd/3.0/. The complete PhD dissertation is freely accessible from http://www.lcc.uma.es/~francis/
+%
+% This thesis has been written adapting the TeXiS template, a LaTeX template for writting thesis and other documents. The complete TeXiS package can be obtained from http://gaia.fdi.ucm.es/projects/texis/. TeXis is distributed under the same conditions of the LaTeX Project Public License (http://www.latex-project.org/lppl.txt). The complete license is available in http://creativecommons.org/licenses/by-sa/3.0/legalcode
+%
+%---------------------------------------------------------------------
+
+\chapter{Benchmarks}
+\label{chapMultiObjTestBeds}
+%
+\begin{FraseCelebre}
+\begin{Frase}
+A goal is not always meant to be reached, it often serves simply as something to aim at.
+\end{Frase}
+\begin{Fuente}
+Bruce Lee (1940-1973)
+\end{Fuente}
+\end{FraseCelebre}
+
+This chapter introduces relevant literature on the experimental evaluation of multiobjective search algorithms and describes the test sets used to assess the performance of the algorithms studied in this thesis. We survey some of the tools and test beds proposed in the past to test algorithmic improvements in the field, review the importance of connecting the theoretical analysis with empirical evaluation, and enumerate important factors to consider in the latter.
+
+The chapter is organized as follows. First, a summary of related benchmarks and previous test sets used by authors on Multiobjective Search can be found in Section \ref{chapMultiObjTestBeds:sec:Antecedents}. Section \ref{chapMultiObjTestBeds:sec:Benchmarks} describes artificial and realistic scenarios employed to test the algorithms presented in this thesis. Section \ref{chapMultiObjTestBeds:sec:Performance} addresses the different factors involved in the evaluation of performance from two points of view: what variables must be measured and what implementation and external factors are desirable to control.
+ 
+%-------------------------------------------------------------------
+\section{Multiobjective Search benchmarks}
+\label{chapMultiObjTestBeds:sec:Antecedents}
+%-------------------------------------------------------------------
+
+The empirical evaluation of algorithms is a main tool of research in Computer Science \citep{johnson2002}. Theoretical studies can provide formal proofs of correctness and indicate the superiority of one algorithm over another, however, the point of research is, and has always been, applying those algorithms to real life problems. To do so, an empirical evaluation, either on simulated or realistic scenarios, is needed to confirm the results already provided in a theoretical manner. Wherever formal studies can not be provided, an empirical evaluation is the best way to approach the problem.
+
+An empirical evaluation is based on two principles. First, reproducibility, i.e. guaranteeing that other researchers may obtain equivalent results when they use the same parameters to reproduce the experiments; and second, fairness, i.e. algorithms should share as much code as possible, define clearly implementation and execution parameters, as well as employ benchmarks or problems available online, see for example the 9th DIMACS Implementation challenge described below.
+
+In this thesis we tackle the Multicriteria Search Problem and consider goals provided by a decision maker that define the subset of Pareto optimal solutions to be returned. On one hand, Multicriteria Search performance can be related to a number of distinct factors relative to the benchmark, such as graph size and shape, number of arcs, solution depth, costs range, number of criteria or correlation between objectives. On the other hand, Goal Programming is also concerned with the efficiency, which can be attributed to the form that the preferences are given, as well as the amount of solutions that satisfy them.
+%Goal Programming methods are more concerned to model the problem as realistically as possible. Hence, they focus on providing satisfactory solutions to the decision maker. Thus, we aim to model the decision maker preferences and employ benchmarks to measure the performance of algorithms which can solve that problem. 
+Therefore, we define our empirical evaluation based on parameters relative to the graph, problem, and preferences given by the DM. 
+
+Many test beds have been proposed over the years for Multiobjective Search problems, for instance, randomly generated graphs, grids or road maps, see Section 3.1 \citep{Machuca2012a} for a recent survey of the literature in Multiobjective Search benchmarks. For instance, \citet{klingmanetal1974} published NETGEN, a random graph generator that first generates a connected skeleton and then adds arcs randomly. \citet{skriverandersen2000} used this tool in their research, however, they presented a new random graph generator, NETMAKER, arguing that graphs generated with NETGEN only had a small number of efficient solutions, even for large scale graphs. 
+
+In order to generate graphs, NETMAKER needs two input parameters: the branching factor and the interval length. The latter specifies which nodes are allowed to be reached from a particular node. Other random graphs have been proposed over the years \citep{hansen1979,JoaoCarlosNamoradoClimaco1982,nanceetal1987,Brumbaugh-Smith1989, Mote1991, gandibleuxetal2006,martinsetal2007,Iori2010,caramiaetal2010,Galand2010}.
+
+Euclidean, rectangular, and square grids are another alternative to test multiobjective search algorithms performance. They have also been extensively used in the literature, e.g.  \citep{Mote1991,guerrieromusmanno2001,guerrieroetal2001,martinsetal2007,caramiaetal2010}.
+% A Euclidean graph is a graph in which the vertices represent points in the plane, and the edges are assigned lengths equal to the Euclidean distance between those points; while a planar graph is a graph that can be embedded in the plane, i.e., it can be drawn on the plane in such a way that its edges intersect only at their endpoints. 
+
+Several road maps scenarios have been provided for experimentation purposes, like the 9th DIMACS implementation challenge, see Section \ref{chapMultiObjTestBeds:subsec:RoadMaps} for further details, maps obtained from OpenStreetMap~\footnote{\url{http://www.openstreetmap.org/}} \citep{Raith2009a,Raith2009}, road networks from the Italian region of Lazio \citep{caramiaetal2010}, or small maps of Auckland (New Zealand) \citep{Raith2009} for the bi-objective cyclist route problem. 
+
+To our knowledge, there are no specific benchmarks developed to test goal-based graph search algorithms.
+
+%-------------------------------------------------------------------
+\section{Benchmarks used in this thesis}
+\label{chapMultiObjTestBeds:sec:Benchmarks}
+%-------------------------------------------------------------------
+
+A combination of artificial and realistic scenarios are used in this thesis to assess the performance of the proposed algorithms. Artificially generated environments, like random grids, allow to control different parameters, such as number of nodes, branching factor, correlation between objectives or solution depth. Therefore, these are suitable to analyze tendencies over increasingly difficult problem instances. 
+
+On the other hand, realistic scenarios come with a fixed set of parameters, which can not be modified at will. However, these provide first-hand information on the applicability of the proposed algorithms. 
+
+The evaluation strategy in this thesis combines both artificial and realistic scenarios. First, we test the performance over artificially designed environments, and then over realistic scenarios.
+
+In addition to these scenarios, we aim to evaluate the performance of Multicriteria Search Problems according to different preferences, or sets of goals grouped in priority levels. Thus, we propose several classes of targets that emulate the possible preferences of a decision maker. These targets split the experiments into two classes of problems (see Section \ref{chapEmpiricalAnalysis:sec:grids} for a detailed description of the experimental setup). Thus, we analyze the efficiency: (1) according to the satisfiability of the goals (whether they can be satisfied or not) (2) when goals can be satisfied; the size of the set of efficient solutions with respect to the size of the Pareto set. Let us now review the benchmarks.
+
+%-------------------------------------------------------------------
+\subsection{Random grids}
+\label{chapMultiObjTestBeds:subsec:RandomGrids}
+%-------------------------------------------------------------------
+
+Artificially generated graphs and grids are the most extensively test sets used in the literature. In order to adequate the problem difficulty in graphs, several parameters have to be defined, such as branching factor, number of arcs, and mainly, the topology of the graph. Square grids have a fixed vicinity, are easy to create, and their size can be gradually increased.  
+
+Grids can also be considered a realistic scenario compatible with real-file applications, e.g. pathfinding in computer games \citep{bayilipolat2011}. Moreover, a recent study from \citet{paixaosantos2008} revealed that problems defined over randomly generated graphs have a number of non-dominated solutions larger than graphs with similar configurations.
+
+The random grids used in this thesis are designed to allow the controlled evaluation of performance with respect to solution depth. In particular, we have generated square bi-dimensional grids of $100 \times 100$, bidirectional arcs and a vicinity of four neighbors, i.e. grids with 10,000 nodes and 39,800 arcs. The start node is placed at the grid center $(50,50)$ and a single destination node is placed in the diagonal from the center to the bottom right corner. 
+
+Different solution depths are considered, varying from 20 to 100, i.e. for solution depth $d$, the destination node is at coordinates $(50 + d/2, 50 + d/2)$. A set of five different problems is generated for each solution depth. For each arc $q$ integer scalar costs $\vec c(i,j) = (c_1,c_2,...,c_q)$ are randomly generated in the range [1,10] using an uniform distribution, i.e. leading to uncorrelated objectives. Table \ref{tab:3-1} shows the average number of Pareto-optimal solutions for each solution depth and number of objectives considered in our random grids experiments. 
+
+\begin{table}
+\caption{Average number of Pareto-optimal cost vectors relative to solution depth and number of objectives ($q$) in our grid problems.}
+\centering
+\scalebox{1}{
+\begin{tabular}{crr}
+\hline \noalign{\smallskip}
+$q$ & Sol. depth & Avg. |C$^*$| \\
+\noalign{\smallskip} \hline
+3 & 20 & 122 \\
+3 & 30 & 302 \\
+3 & 40 & 694 \\
+3 & 50 & 1,599 \\
+3 & 60 & 2,007 \\
+3 & 70 & 2,561 \\
+3 & 80 & 5,423 \\
+3 & 90 & 5,912 \\
+3 & 100 & 8,307 \\
+\hline 
+\noalign{\smallskip} 
+4 & 20 & 493 \\
+4 & 30 & 2,230 \\
+4 & 40 & 7,826  \\
+4 & 50 & 24,942 \\
+\hline
+\noalign{\smallskip}  
+5 & 20 & 1,819 \\
+5 & 30 & 10,830 \\
+5 & 40 & 49,634 \\
+\hline
+\end{tabular}
+}
+\label{tab:3-1}
+\end{table}
+
+%-------------------------------------------------------------------
+\subsection{Road maps}
+\label{chapMultiObjTestBeds:subsec:RoadMaps}
+%-------------------------------------------------------------------
+
+Among the multiple realistic domains where Multicriteria Search arises (see Section \ref{chapMultiObjAlg:sec:MSP} for a detailed classification of several application domains for MSP) we have selected route planing. Route planing is currently a hot research topic driven partly by the boom of GPS navigation devices and on-line route planners.
+
+Single-objective search on road maps has been intensively studied over the last decades \citep{Pearl1984,Zhan1998a,Klunder2006,Geisberger2008,schultes2008,Delling2009a}. However, research on multiobjective route planning is a recent area of interest \citep{Delling2009,Raith2009a,Machuca2011,Machuca2011b, Mali2012} and it is expected to become even more popular with the progressive introduction of electrical vehicles \citep{Baum2014, Goodrich2014} to optimize the trade-off between attributes like energy consumption or travel time. 
+
+The experiments presented in this thesis involve the use of realistic road maps from the 9th DIMACS Implementation Challenge: Shortest Path. Road maps are defined as graphs where arcs represent roads and nodes represent road junctions. Coordinates (longitude and latitude) are also provided for each node. The test bed comprises a set of twelve road maps of increasing size\footnote{\url{http://www.dis.uniroma1.it/challenge9/}}. These data were provided by the 2000 U.S. Census Bureau's TIGER/Line R database (Topologically Integrated Geographic Encoding and Referencing system). 
+
+The original DIMACS maps provide two different criteria: physical distance and travel time. An additional criterion was introduced in \citet{Machuca2011} by estimating economic cost. This was obtained combining certain values for tolls and fuel consumption according to road category. The resulting values are not linearly correlated to those of the other cost values. The experiments reported in Chapter \ref{chapEmpiricalAnalysisRoadMaps} consider the simultaneous minimization of these three attributes, physical distance $(c_1)$, travel time $(c_2)$, and economic cost $(c_3)$.  
+
+\citet{Machuca2011b} generated fifty problem instances for each of the four smallest maps from the DIMACS Challenge: New York, San Francisco Bay Area, Colorado and Florida, to minimize simultaneously attributes $(c_1)$ and $(c_2)$. Given that our experimental evaluation considers the minimization of three attributes instead of two, our problems have much higher difficulty and therefore, we only selected the first twenty problems of the New York city map. Additionally, due to the fact that only fourteen out of the twenty problems of New York could be solved within the runtime limit, we employed a second road map from the Vermont State\footnote{Available on \url{http://www.dis.uniroma1.it/challenge9/data/tiger/}} and generated twenty random problems in a similar way. The Vermont State road map represents an interesting benchmark to observe performance trends, since all algorithms solve all problem instances within the runtime limit. 
+
+%-------------------------------------------------------------------
+\subsection{Significance of the test sets}
+\label{chapMultiObjTestBeds:sec:significanceGrids}
+%-------------------------------------------------------------------
+
+Regarding random grid problems, the majority of past studies focus on the bi-criterion case \citep{Raith2009, Machuca2012a}. Among those considering the multicriteria case, \citet{caramiaetal2010} use grids of $20 \times 20$ nodes and 167.5 efficient paths in average, \citet{martinsetal2007,Paixao2007} also use grids with $20 \times 20$ nodes but a greater number of efficient paths, since they generated arcs cost in the range [1,1000]). Our experimental test on Multicriteria Search consider in general larger instances than those studies.
+
+Regarding road map experiments, \citet{Machuca2012a} presented recent experiments over two sets of problems: 
+\begin{enumerate}
+	\item A first set of problems minimizes \textit{distance} ($c_1$) and \textit{time} ($c_2$) values provided by the DIMACS challenge maps.
+	\item A second set of problems minimizes \textit{time} ($c_2$) and \textit{economic cost} ($c_3$). 	
+\end{enumerate}
+
+Table \ref{tab:3-2} illustrates the average number of Pareto-optimal solutions for each set of our problems. Pearson's correlation coefficient for costs $c_1$ and $c_2$ is 0.96 while that for $c_2$ and $c_3$ is 0.16, i.e. there is a strong linear correlation between time and distance, while there is no such a correlation between travel time and economic cost. 
+
+The sets of experiments with two objectives proposed by \citet{Machuca2012a} were composed by 50 problem instances, while our test set with three objectives comprises only twenty instances. We decided to reduce the number of problems in the test set due to the greater difficulty of the three objectives search compared to the bi-objective. Table \ref{tab:3-2} shows the average number of Pareto-optimal solution vectors for experiments with ($c_1$,$c_2$), ($c_2$,$c_3$), and ($c_1,c_2,c_3$) cost functions. For New York city road map, the average number of Pareto-optimal solution vectors of ($c_1,c_2,c_3$) experiments shows an asterisk. This indicates that 47,738.8 represents the average considering only the fourteen solvable problems of the set. Yet this number is approximately 240 and 22 times greater than the average Pareto-optimal solution vectors in experiments with ($c_1$,$c_2$) and ($c_2$,$c_3$) cost functions, respectively. In consequence, we expect our test sets to be in line with the hardest ones proposed to date for multiobjective search.
+
+\begin{table}
+    \caption{Average Pareto-optimal cost vectors for three sets of experiments. ($^+$) represents the average of the fourteen problems solved.}
+    \begin{minipage}{.5\linewidth}
+      \centering
+        \begin{tabular}{lr}
+			\hline \noalign{\smallskip}
+			\multicolumn{2}{c}{New York city road map} \\
+			\noalign{\smallskip} 
+			Set of problems & Average |C$^*$| \\
+			\noalign{\smallskip} \hline
+			($c_1,c_2$) & 198.6 \\
+			($c_2,c_3$) & 2,086.6 \\
+			($c_1,c_2,c_3$) & $^+$47,738.8 \\
+			\hline
+			\end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+			\begin{tabular}{lr}
+			\hline \noalign{\smallskip}
+			\multicolumn{2}{c}{Vermont road map} \\
+			\noalign{\smallskip}
+			Set of problems & Average |C$^*$| \\
+			\noalign{\smallskip} \hline
+			($c_1,c_2$) & 81.6 \\
+			($c_2,c_3$) & 247.1 \\
+			($c_1,c_2,c_3$) & 3,334.6 \\
+			\hline
+			\end{tabular}
+		\label{tab:3-2}
+    \end{minipage} 
+\end{table}
+
+%-------------------------------------------------------------------
+\subsection{Evaluation of preferences based on goals}
+\label{chapMultiObjTestBeds:subsec:Performance}
+%-------------------------------------------------------------------
+
+In order to assess the impact of the goals satisfiability on the efficiency of the goal-based algorithms, we employ a lexicographic goal programming model that considers three goals grouped in two priority levels: \\
+ 
+Level 1 \hspace{10 mm} $g_1 \leq t_1, \hspace{5 mm} w_{1} = 0.5$ \\
+\hphantom{a} \hspace{26 mm} $g_2 \leq t_2, \hspace{5 mm} w_{2} = 0.5$ 
+
+Level 2 \hspace{10 mm} $g_3 \leq t_3, \hspace{5 mm} w_{3} = 1$ \\
+
+Sets of target values for each problem are defined in terms of the ideal  $\vec \alpha = (\alpha_1, \alpha_2, \alpha_3)$, and  nadir points  $\vec \beta = (\beta_1, \beta_2, \beta_3)$. These were previously calculated from the full Pareto sets obtained with \namoa. The nadir point is generally unknown in practice, but we take advantage of it in these experiments to obtain targets with different degrees of satisfaction for the purpose of experimentation. In a practical situation the ideal point is known thanks to the lower bound precalculations \citep{Tung1992}. These also provide the nadir point for two objectives, and at least an approximation for three or more objectives.
+
+Two different classes of experiments were carried out. For the first class, five different target sets were calculated as follows: 
+\begin{equation} \label{eq:targets}
+t_i = \alpha_i + (\beta_i - \alpha_i) \times k_1, \qquad k_1 \in \{ 0, 0.25, 0.5, 0.75, 1 \}  
+\end{equation}
+
+For example, for $k_1=1$ all Pareto-optimal solutions will satisfy all goals, and for $k_1=0$ no Pareto solution will likely satisfy them. 
+
+For the second class, targets of the first level were fixed for $k_1=0.75$ and $k_1=0.5$, which were found to provide satisfactory solutions. We then measured efficiency setting stricter targets for the third goal:
+\begin{equation} \label{eq:targets2}
+t_3 = \alpha_3 + (\beta_3 - \alpha_3) \times k_2 \qquad k_2 = k_1 \times k^\prime, \quad \textrm{where} \ k^\prime \in \{ 0.25, 0.5, 0.75, 1 \}  
+\end{equation}. 
+
+These values of $t_3$ allow us to evaluate the performance when some goals are satisfied and some not. 
+
+%-------------------------------------------------------------------
+\section{Evaluation of performance in Multicriteria Search}
+\label{chapMultiObjTestBeds:sec:Performance}
+%-------------------------------------------------------------------
+
+In the following chapters we introduce three new algorithms. The first one, called \lexgo, is a goal-based algorithm; the second one, \namoate, represents a specialization of \namoa, and the last, \lexgote, is devised as a specialization of \lexgo. We use these algorithms to evaluate two alternatives to deal with MSP with goal preferences. In the first one, \namoa \ and \namoate \ return the full Pareto set of non-dominated solutions to the problem and determine the subset of solutions that satisfy the goals from that set. In the second one, \lexgo \ and \lexgote \ are used to search only for goal-optimal solutions. 
+
+Our purpose with these new algorithms can be summarized with two statements. In the first place, improve the performance of both alternatives, and in the second place, assess their performance.
+
+This evaluation of the performance is usually characterized with respect to solution depth, explored labels, correlation between objectives \citep{Brumbaugh-Smith1989,Mote1991,Machuca2010} or the presence/absence of lower bounds.
+
+All proposed algorithms are based on \namoa.
+%(although the t-discarding technique, presented in Section \ref{chapMultiObjAlg:sec:Time-efficient-MSalg}, is applicable to any Multicriteria Search labeling algorithm)
+It has been proved that the more informed a consistent lower bound function is, the smaller the number of labels explored by \namoa \ with this function \citep{Mandow2010}. The impact on efficiency has also been empirically confirmed by several studies \citep{Machuca2012, Machuca2012a}. Hence, we will employ a lower bound as informed as possible in all analyzed algorithms regardless they find the full Pareto set or only the solutions to the problem that satisfy the goals. 
+
+Traditionally experimental evaluation of algorithms, e.g. see \citep{Raith2009,Sauvanet2010}, considers both space and time performance. Space requirements can be measured by the number of expanded or permanent labels, while the number of dominance checks has been pointed out as an important limiting factor in the time performance, e.g. see \citep{Iori2010,Machuca2011}.
+
+Once the variables to measure algorithm performance are identified, we turn our attention to the factors concerning the implementation of the algorithms. In Multicriteria Search two aspects must be specified whenever an algorithm is evaluated. Firstly, the label selection policy is used to choose non-dominated labels from OPEN. Lexicographic order is a frequent choice (e.g. see \citep{Martins1984}). A recent study showed the linear aggregation order can have better performance than the lexicographic one \citep{Iori2010}. \namoa \ will be tested with lexicographic and linear selection orders. In this thesis, we will show that the lexicographic order combined with the t-discarding technique can clearly outperform the linear aggregation order for the case with three objectives. The second aspect in the implementation of a multicriteria search algorithm (similarly in SPP) is the data structure to keep sorted the OPEN queue of alternatives \citep{Paixao2007}. Our algorithms are implemented using a binary heap.
+
+Some other implementation details which can influence time performance are as follows:
+
+\begin{itemize}
+	\item The particular machine where the experimental evaluation is run, e.g. architecture, number or processors, processor speed, physical memory available, etc.
+	\item Process execution, e.g. number of simultaneous thread executions, amount of memory available to the process, Operating System, programming language used, compiler version, compiler optimization level, etc.
+    \item In the OPEN queue two policies can be employed, depending on whether only the current best cost estimate of each node is kept in OPEN at each iteration \citet{Mandow2005}, or all alternatives are stored in OPEN \citep{Mali2012}.
+    \item Implementation of the $G_{op}$ (and $G_{cl}$) sets of non-dominated labels, e.g. whether these sets, which consist of unordered items by definition, are ordered (or not) according to the label selection policy employed by the algorithm, and the data structure used to sort them.
+    \item An optimized graph structure to store nodes and arcs in memory. This structure provides dynamic memory management of the graph and can optimize the expansion of consecutive nodes and edges \citep{Mali2013}.
+    \item The implementation of ``merge''  and ``prune'' operations, i.e. the strategies used for the comparison of new alternatives against known labels of the node  \citep{skriverandersen2000,Raith2009,Iori2010}
+\end{itemize}
+
+In particular, the decisions taken in the practical implementation of algorithms in this thesis are as follows:
+\begin{itemize}
+	\item All the algorithms were run on an Intel Core i7 3612QM at 2.1 Ghz, 4GB of DDR3 RAM under Windows 7 (64-bit), and on a Sun Fire X4140 server with 2 six-core AMD Opteron 2435 at 2.6 GHz processors and 64 Gb of DDR2 RAM under Windows Server 2008 R2 (64-bit).
+    \item The algorithms \namoa, \namoate, \lexgo\ and \lexgote \ were implemented to share as much code as possible. The programming language used was ANSI Common Lisp. Each problem instance was solved using an individual process with a single thread.
+    \item The lexicographic and linear selection orders were used to choose among non-dominated open alternatives in \namoa \ and \lexgo. \namoate \ and \lexgote \ use only the lexicographic order.
+    \item The OPEN queue was implemented as a binary heap but only the current best label of each node is kept in OPEN at each iteration.    
+    \item The $G_{op}$ and $G_{cl}$ sets were ordered according to the label selection policy employed by the algorithm. 
+\end{itemize}
