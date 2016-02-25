@@ -1,0 +1,192 @@
+%---------------------------------------------------------------------
+%
+%                          Tesis.tex
+%
+%---------------------------------------------------------------------
+%
+% Tesis.tex
+% Copyright 2015 Dr. Francisco J. Pulido
+%
+% This file belongs to the PhD titled "New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems", distributed under the Creative Commons Licence Attribution-NonCommercial-NoDerivs 3.0, available in http://creativecommons.org/licenses/by-nc-nd/3.0/. The complete PhD dissertation is freely accessible from http://www.lcc.uma.es/~francis/
+%
+% This thesis has been written adapting the TeXiS template, a LaTeX template for writting thesis and other documents. The complete TeXiS package can be obtained from http://gaia.fdi.ucm.es/projects/texis/. TeXis is distributed under the same conditions of the LaTeX Project Public License (http://www.latex-project.org/lppl.txt). The complete license is available in http://creativecommons.org/licenses/by-sa/3.0/legalcode
+%
+%---------------------------------------------------------------------
+
+%----------------------------------------------------------------------
+%
+% Este fichero contiene el "documento maestro" del documento. Lo único
+% que hace es configurar el entorno LaTeX e incluir los ficheros .tex
+% que contienen cada sección.
+%
+%----------------------------------------------------------------------
+%
+% Los ficheros necesarios para este documento son:
+%
+%       TeXiS/* : ficheros de la plantilla TeXiS.
+%       Other/* : ficheros con las partes del documento que no
+%          son capítulos ni apéndices (portada, agradecimientos, etc.)
+%       Chapters/*.tex : capítulos de la tesis
+%       Appendices/*.tex: apéndices de la tesis
+%       constantes.tex: constantes LaTeX
+%       config.tex : configuración de la "compilación" del documento
+%       guionado.tex : palabras con guiones
+%
+% Para la bibliografía, además, se necesitan:
+%
+%       *.bib : ficheros con la información de las referencias
+%
+% ---------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,twoside]{book}
+
+\usepackage[top=1.35in, bottom=1.6in, left=1.3in, right=1.3in]{geometry}
+
+\newcommand{\ficherosBasicosTeXiS}{%
+TeXiS/TeXiS_pream,TeXiS/TeXiS_cab,TeXiS/TeXiS_bib,TeXiS/TeXiS_cover,
+TeXiS/TeXiS_certif,TeXiS/TeXiS_toc,TeXiS/TeXiS_part,TeXiS/TeXiS_dedic,TeXiS/TeXiS_indice%
+}
+\newcommand{\ficherosBasicosTexto}{%
+constantes,guionado,Cascaras/bibliografia,config%
+}
+\newcommand{\compilaCapitulo}[1]{%
+\includeonly{\ficherosBasicosTeXiS,\ficherosBasicosTexto,Capitulos/#1}%
+}
+
+\newcommand{\compilaApendice}[1]{%
+\includeonly{\ficherosBasicosTeXiS,\ficherosBasicosTexto,Appendices/#1}%
+}
+
+% Activar para detectar los warnings de overfull
+%\overfullrule=2cm
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%            Preámbulo del documento. Configuraciones varias
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+% Define  el  tipo  de  compilación que  estamos  haciendo.   Contiene
+% definiciones  de  constantes que  cambian  el  comportamiento de  la
+% compilación. Debe incluirse antes del paquete TeXiS/TeXiS.sty
+\include{config}
+
+% Paquete de la plantilla
+\usepackage{TeXiS/TeXiS}
+
+\usepackage{eurosym} % Para el símbolo del euro
+\usepackage{multirow} % Paquete para tablas con multi-fila
+\usepackage[normalem]{ulem} %para tachar texto
+\usepackage{float} % Para imágenes fijas en un determinado lugar
+\usepackage{amsmath}
+\usepackage{url}
+
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the current one
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+  \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+  \do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+  \do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+  \do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+  \do\Y\do\Z}
+
+\usepackage{rotating}
+
+% Format of tables and figures captions
+\usepackage[labelfont=bf,labelsep=period]{caption} 
+
+% Margenes
+%\usepackage[top=1.35in, bottom=1.6in, left=1.3in, right=1.3in]{geometry}
+
+% Incluimos el fichero con comandos de constantes
+\include{constantes}
+
+\incluirFicherosBasicosTeXiS
+
+% Sacamos en el log de la compilación el copyright
+\typeout{Copyright \autor}
+
+%
+% "Metadatos" para el PDF
+%
+
+\definecolor{DarkBlueNavy}{RGB}{0,0,255}
+
+\ifpdf\hypersetup{%
+%    colorlinks=true,linkcolor=black,citecolor=DarkBlueNavy,
+%    pdfpagemode=UseOutlines, pdfpagelayout=SinglePage,
+%    pdfhighlight=/N, pageanchor=true, pdftoolbar=true, pdfmenubar=false,
+%    pdfstartview=FitH,
+    pdftitle = {\titulo},
+    pdfsubject = {Doctoral Dissertation},
+    pdfkeywords = {Multiobjective, Goal Programming, Shortest Path, Road networks, Decision Theory},
+    pdfauthor = {\textcopyright\ \autor},
+    pdfcreator = {\LaTeX\ with packet \flqq hyperref\frqq},
+    pdfproducer = {pdfeTeX-0.\the\pdftexversion\pdftexrevision},
+    }
+    \pdfinfo{/CreationDate (\today)}
+\fi
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%                        Documento
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{document}
+
+% Incluimos el  fichero de definición de guionado  de algunas palabras
+% que LaTeX no ha dividido como debería
+\input{guionado}
+
+% Marcamos  el inicio  del  documento para  la  numeración de  páginas
+% (usando números romanos para esta primera fase).
+\frontmatter
+
+\include{Other/cover}
+\include{Other/certificacion}
+\include{Other/dedicatoria}
+\include{Other/agradecimientos}
+\include{Other/abstract}
+
+\ifx\generatoc\undefined
+\else
+%\include{TeXiS/TeXiS_toc}
+\include{Other/toc}
+\fi
+
+% Marcamos el  comienzo de  los capítulos (para  la numeración  de las
+% páginas) y ponemos la cabecera normal
+\mainmatter
+\restauraCabecera
+
+\bibliographystyle{TeXiS/TeXiS}
+
+\include{Chapters/PartIntro}
+\include{Chapters/ChapIntroduction}
+\include{Chapters/ChapMultiObjAlg}
+\include{Chapters/ChapMultiObjTestBeds}
+
+\include{Chapters/PartContributions}
+\include{Chapters/ChapContributions}
+\include{Chapters/ChapFormalAnalysis}
+\include{Chapters/ChapEmpiricalAnalysisGrids}
+\include{Chapters/ChapEmpiricalAnalysisRoadMaps}
+
+\include{Chapters/PartConclusions}
+\include{Chapters/ChapConclusions}
+
+% Apéndices
+\appendix
+
+\include{Appendices/PartAppendix}
+\include{Appendices/resumen}
+
+\backmatter
+
+%
+% Bibliografía
+%
+
+\include{Other/bibliografia}
+
+%
+% Final
+%
+%\include{Cascaras/fin}
+
+\end{document}

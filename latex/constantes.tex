@@ -1,0 +1,119 @@
+%---------------------------------------------------------------------
+%
+%                          constantes.tex
+%
+%---------------------------------------------------------------------
+%
+% Fichero que  declara nuevos comandos LaTeX  sencillos realizados por
+% comodidad en la escritura de determinadas palabras
+%
+%---------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comando: 
+%
+%       \titulo
+%
+% Resultado: 
+%
+% Escribe el título del documento.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\titulo{New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comando: 
+%
+%       \autor
+%
+% Resultado: 
+%
+% Escribe el autor del documento.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\autor{Francisco Javier Pulido Arrebola}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comando: 
+%
+%	     \astar
+%       \namoa
+%       \tc
+%       \moa
+%
+% Resultado: 
+%
+% Acrónimos de los algoritmos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\astar{$A^*$}
+\def\namoa{$\text{NAMOA}^*$}
+\def\tc{$\text{TC}$}
+\def\moa{$\text{MOA}^*$}
+\def\metal{$\text{METAL-A}^*$}
+\def\namoalex{$\text{NAMOA}^{*}_{\text{lex}}$}
+\def\namoalin{$\text{NAMOA}^{*}_{\text{lin}}$}
+\def\namoate{$\text{NAMOA}^{*}_{\text{dr}}$}
+
+\def\lexgo{$\text{LEXGO}^*$}
+\def\lexgolex{$\text{LEXGO}^*_{\text{lex}}$}
+\def\lexgolin{$\text{LEXGO}^*_{\text{lin}}$}
+\def\lexgote{$\text{LEXGO}^*_{\text{dr}}$}
+
+\def\bestd{\vec{d}_B}  %best deviation vector among solutions
+                                %already found
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comando: 
+%
+%       \supo
+%       \lema
+%       \defi
+%       \result
+%       \property
+%       \demo
+%       \corolario
+%       \teorema
+%
+% Resultado: 
+%
+% Comandos para teoremas y propiedades formales y definiciones
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newtheorem{supo}{Assumption}[chapter]
+\newtheorem{lema}{Lemma}[chapter]
+\newtheorem{defi}{Definition}[chapter]
+\newtheorem{result}{Result}[chapter]
+\newtheorem{property}{Property}[chapter]
+\newenvironment{demo}
+{\noindent {\bf Proof. }}
+{}
+\newtheorem{corolario}{Corolary}[chapter]
+\newtheorem{teorema}{Theorem}[chapter]
+
+\newtheorem{concl}{Conclusion}
+
+\newtheorem{ejemplo}{Example}
+
+\newcommand{\et}{\ensuremath{\wedge}}
+\newcommand{\vel}{\ensuremath{\vee}}
+\newcommand{\no}{\ensuremath{\neg}}
+\newcommand{\imp}{\ensuremath{\rightarrow}}
+\newcommand{\sii}{\ensuremath{\leftrightarrow}}
+\newcommand{\ssi}{\ensuremath{\leftrightarrow}}
+
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "tesis.tex"
+%%% End:
