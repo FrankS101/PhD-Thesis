@@ -16,7 +16,7 @@ Please cite using the following BibTex entry:
 ```
 @phdthesis{pulido2015phd,
   title  = {New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems},
-  author = {Pulido, Francisco Javier},
+  author = {Pulido, Francisco-Javier},
   school = {University of M\'{a}laga, Spain},
   year   = 2015,
   Url    = {http://riuma.uma.es/xmlui/handle/10630/10204}
