@@ -1,0 +1,169 @@
+%---------------------------------------------------------------------
+%
+%                          stateoftheArt.tex
+%
+%---------------------------------------------------------------------
+%
+% stateoftheArt.tex
+% Copyright 2015 Dr. Francisco J. Pulido
+%
+% This presentation belongs to the PhD titled "New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems", distributed under the Creative Commons Licence Attribution-NonCommercial-NoDerivs 3.0, available in http://creativecommons.org/licenses/by-nc-nd/3.0/. The complete PhD dissertation is freely accessible from http://www.lcc.uma.es/~francis/
+
+\section{State of the art}
+
+\begin{frame} 
+\frametitle{Properties of multicriteria algorithms}
+\vspace{5mm}
+	\begin{block}<1-2>{Definition}
+	\vspace{1mm}
+	 An algorithm is \textcolor{red}{admissible} if it guarantees to find \textcolor{ao}{the optimal solution} to the problem.
+	\vspace{1mm}
+	\end{block}
+	\vspace{5mm}
+	\begin{block}<2>{Definition}
+	\vspace{1mm}
+    We will measure the \textcolor{red}{efficiency} of algorithms according to the \textcolor{ao}{number of explored labels} to find the solution.
+	\vspace{1mm}	
+	\end{block}
+\note{We will analyze two formal properties for the algorithms we have proposed: the admissibility, or in other words, do they find the whole set of Pareto or goal-optimal solutions? And the second one, how efficient are these algorithms according to the number of explored labels?}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{A posteriori algorithms}
+
+\begin{frame} 
+\frametitle{A posteriori algorithms}
+Extensions of \astar \ to the multiobjective case to calculate the Pareto frontier:
+	\vspace{5mm}
+	\begin{description}
+		\item[\moa] \quad (Stewart \& White, 1991) \only<2->{$\rightarrow$ \textcolor{red}{pathological behaviour}}
+		\vspace{2mm}
+		\item[TC] \quad (Tung \& Chew, 1992) \only<2->{$\rightarrow$ \textcolor{red}{less efficient than \namoa}}
+		\vspace{2mm}		
+		\item[\namoa] \quad (Mandow \& P\'{e}rez de la Cruz,  2005)
+	\end{description}
+	\vspace{5mm}
+	\Ovalbox{All can be used with heuristic functions as lower bounds}
+\note{}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{\namoa}
+	\begin{block}{\namoa \ properties}
+		\vspace{2mm}
+		Analogously to \astar: 
+		\vspace{1mm}
+		\begin{itemize}
+			\item \textcolor{ao}{Admissible} when provided with a consistent heuristic function.
+			\vspace{1mm}
+			\item It explores an \textcolor{ao}{optimal number of labels} in its class.
+			\vspace{1mm}
+			\item It \textcolor{ao}{improves} its efficiency \textcolor{ao}{with more informed lower bounds}.
+		\end{itemize}
+	\end{block}
+\note{Since this algorithm is the base of our research work, let's name first its formal properties, which are analogous to \astar \ properties: \namoa \ is an admissible algorithm when provided with consistent lower bounds, explores an optimal number of labels in its class, and improves its efficiency with more informed lower bounds.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{\namoa}
+	\textbf{Relevant features of \namoa:}
+	\vspace{5mm}
+	\begin{itemize}
+		\item Label selection policy 
+		\vspace{3mm}
+		\item Two sets of labels for each node $n$: $G_{op}(n)$ and $G_{cl}(n)$.
+		\vspace{3mm}
+		\item A set COSTS of solutions.	
+		\vspace{3mm}
+		\item Discarding rules of dominated paths
+	\end{itemize}
+\note{On the other hand, the main features of \namoa \ can be enumerated as: a flexible label selection policy, two sets of non-dominated labels store the open and closed nodes that reach each node, a set of non-dominated solutions, and the three procedures used by \namoa \ to discard dominated alternatives: checking against Gop, Gcl, and COSTS.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]
+\frametitle{Label selection policy}
+	\namoa \ can be used with any path selection policy that assures the \textcolor{ao}{best label} according to that policy \textcolor{ao}{is a non-dominated label}.
+	\vspace{5mm}	
+
+    \begin{itemize}
+		\item<2-> \textcolor<3>{red}{Lexicographic order}
+	\end{itemize}
+		\vspace{5mm}
+	\only<3->{
+		\begin{equation*}
+ \vec{y} \prec_{L} \vec{y'} \ \ \Leftrightarrow \ \ \exists j \ (1\leq~i\leq~q) \ y_j 	< y'_j \ \land \ \forall i < j \ \ y_i = y'_i. 
+		\end{equation*}
+	}
+	\begin{itemize}
+		\item<2-> \textcolor<4>{red}{Linear aggregation order}
+	\end{itemize}
+		\vspace{5mm}
+	\only<4>{
+		\begin{equation*}
+		 \vec y \prec_{lin} \vec{y'} \ 
+		\Leftrightarrow \ \ %\quad 
+		\sum_{i}{y_i} \ < \ %\quad
+		\sum_{i}{y'_i} \ \ ,\ 1~\leq~i~\leq~q 
+		\end{equation*}
+	}
+\note{\namoa \ uses a priority queue to sort the open paths, like \astar \ selects the minimum f-value from the queue, \namoa \ uses any label selection policy that can assure the best label according to that policy is always a non-dominated label. In this work, we have considered two different orders, lexicographic and linear aggregation. The lexicographic order selects the path with minimum c1 and to break ties would use c2, meanwhile, the linear aggregation order selects first the path which aggregation of both c1 and c2 values is minimum. Thus, the label selection policy leads \namoa \ to explore the search space in a different order.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]
+\frametitle{Discarding dominated paths on \namoa}
+		\textcolor{ao}{\namoa \ discards early in the search} those paths that will not lead to \textcolor{ao}{non-dominated solutions}.
+		\vspace{5mm}
+\begin{columns}[onlytextwidth, t]
+\column{0.25\linewidth}
+    \begin{itemize}
+		\item<1-> \textcolor<2>{red}{Op-pruning}
+		\vspace{6mm}
+		\item<1-> \textcolor<3>{red}{Cl-pruning}
+		\vspace{6mm}
+		\item<1-> \textcolor<4>{red}{Filtering}
+	\end{itemize}
+
+\column{0.7\linewidth}
+	\begin{figure}
+    	\centering
+		\includegraphics<1>[scale=0.6]{figs/namoa1}
+		%\includegraphics<2>[scale=0.5]{figs/namoa2}
+		%\includegraphics<3>[scale=0.5]{figs/namoa3}
+		\includegraphics<2>[scale=0.6]{figs/namoa4}		
+		%\includegraphics<5>[scale=0.5]{figs/namoa5}
+		%\includegraphics<6>[scale=0.5]{figs/namoa6}		
+		%\includegraphics<7>[scale=0.5]{figs/namoa7}
+		\includegraphics<3>[scale=0.6]{figs/namoa8}
+		%\includegraphics<9>[scale=0.5]{figs/namoa9}		
+		\includegraphics<4>[scale=0.6]{figs/namoa10}
+	\end{figure}
+\end{columns}
+\note{As we said, \namoa \ discards dominated labels by three procedures: Let's see them through different examples: there is a new path found to n' with cost (3,6). This path is discarded by a path with cost (3,4) already closed in n'. Let's now analyze another new path with cost (5,3), this will be pruned by (5,2), an open path already found in  n'. Finally, let's assume a path to be expanded in n, which f-value is (9,9), this path will be filtered by either (8,8), or (9,7), solutions path already found, due to this path can not lead to a non-dominated solution.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{A priori algorithms}
+\begin{frame}[t] 
+\frametitle{A priori algorithms}
+\vspace{15mm}
+Is there any \textcolor{ao}{specifically devised algorithm for lexicographic goals?}
+\vspace{8mm}
+	\begin{description}
+		\item[\metal] (Mandow \& P\'{e}rez de la Cruz, 2001) \\
+		Based on \moa $\longrightarrow$ \textcolor{red}{pathological behaviour}
+	\end{description}
+\vspace{8mm}
+\only<2>{
+\qquad $\longrightarrow$ Then, let's propose a \textcolor{ao}{new approach based on \namoa}}
+\note{Now we turn our attention to the second possibility we named, a priori algorithms. The state of the art here was \metal \ which was based on \moa. According to recent studies, we can consider this algorithm deprecated and hence, we will propose a new approach based on \namoa.}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}<beamer:0>
+\frametitle{In summary}
+	\begin{block}{Reference algorithm}
+	\vspace{1mm}
+		\begin{center}
+			\namoa \ with the ideal point as lower bound
+		\end{center}
+	%\vspace{1mm}	
+	\end{block}
+\note{To conclude this part, I'd like to remark that we used \namoa \ with the ideal point as lower bound, the ideal point is the most possible informed and admissible estimate function for a multiobjective problem. This combination was the best alternative prior to this research work, and on top of that we built upon our algorithmic contributions.}
+\end{frame}	

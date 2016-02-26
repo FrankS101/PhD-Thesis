@@ -1,0 +1,131 @@
+%---------------------------------------------------------------------
+%
+%                          main.tex
+%
+%---------------------------------------------------------------------
+%
+% main.tex
+% Copyright 2015 Dr. Francisco J. Pulido
+%
+% This presentation belongs to the PhD titled "New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems", distributed under the Creative Commons Licence Attribution-NonCommercial-NoDerivs 3.0, available in http://creativecommons.org/licenses/by-nc-nd/3.0/. The complete PhD dissertation is freely accessible from http://www.lcc.uma.es/~francis/
+
+\documentclass[xcolor=dvipsnames, t]{beamer}
+\usetheme{Madrid}
+\usecolortheme{orchid}
+
+\defbeamertemplate{subsection in toc}{bullets}{%
+  \leavevmode
+  \parbox[t]{1em}{\textbullet\hfill}%
+  \parbox[t]{\dimexpr\textwidth-1em\relax}{\inserttocsubsection}\par}
+\defbeamertemplate{section in toc}{sections numbered roman}{%
+  \leavevmode%
+  \MakeUppercase{\romannumeral\inserttocsectionnumber}.\ %
+  \inserttocsection\par}
+
+\setbeamertemplate{section in toc}[sections numbered roman]
+\setbeamertemplate{subsection in toc}[bullets]
+
+\usepackage[utf8]{inputenc}
+\usepackage{fancybox}
+\usepackage{framed}
+\usepackage{pgfpages}
+
+\definecolor{ao}{rgb}{0.0, 0.0, 1.0}
+
+\newif\ifisnotes
+\input{Temp}
+\ifisnotes
+\pgfpagesuselayout{2 on 1}[]
+\setbeameroption{show notes on second screen=bottom}
+\setbeamertemplate{note page}[plain]
+\fi
+
+
+% Commands with algorithm names and theorems
+% -----------------------------------------------------------------------------
+\input{commands}
+
+\title[PhD Dissertation]{New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems}
+\subtitle{PhD Dissertation}
+
+\author[Francisco J. Pulido Arrebola]{Francisco J. Pulido Arrebola \newline
+{\small Supervised by: Dr. Lawrence Mandow}}
+
+\institute[]{Dept. Lenguajes y Ciencias de la Computaci\'{o}n \\
+E.T.S. Ingeniería Inform\'{a}tica \\
+  Universidad de M\'alaga}
+
+\titlegraphic{\includegraphics[width=150px,height=45px]{figs/logos}}
+  
+\date{July 7, 2015}
+
+% Document
+% -----------------------------------------------------------------------------
+\begin{document}
+
+\begin{frame}[noframenumbering]
+\titlepage
+\end{frame}
+
+\begin{frame}[noframenumbering]
+\frametitle{Outline}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\AtBeginSection[]
+{
+\begin{frame}<beamer>[noframenumbering]
+\frametitle{Outline}
+\tableofcontents[
+  currentsection,
+  sectionstyle=show/show,
+  subsectionstyle=show/shaded/hide
+]
+\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+\begin{frame}<beamer>[noframenumbering]
+\frametitle{Outline}
+\tableofcontents[
+  currentsection,
+  sectionstyle=show/show,
+  subsectionstyle=show/shaded/hide
+]
+\end{frame}
+}
+
+% Introduction
+% -----------------------------------------------------------------------------
+\input{introduction}
+
+% State of the art
+% -----------------------------------------------------------------------------
+\input{stateoftheArt}
+
+% Contributions
+% -----------------------------------------------------------------------------
+\input{contributions}
+
+% Formal and empirical analyses
+% -----------------------------------------------------------------------------
+\input{analyses}
+
+% Conclusions
+% -----------------------------------------------------------------------------
+\input{conclusions}
+
+\begin{frame}<beamer>[noframenumbering]
+  \frametitle{}
+  \begin{center}
+    \Huge \textcolor{blue}{Thank you for your attention !!!}
+    \Huge \textcolor{black}{Gracias por su atenci\'{o}n !!!}
+  \end{center}
+\end{frame}
+
+\begin{frame}<beamer>[noframenumbering]
+\titlepage
+\end{frame}
+
+\end{document}
