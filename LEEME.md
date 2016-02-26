@@ -1,7 +1,7 @@
 New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems
 ============================
 
-Tesis Doctoral, Francisco J. Pulido, defendida en la Universidad de Málaga el 7 de Julio de 2015.
+Tesis Doctoral, Francisco J. Pulido, defendida en la Universidad de Málaga el 7 de Julio de 2015 y supervisada por el Dr. Lawrence Mandow.
 
 _Enlaces:_ 
 - http://riuma.uma.es/xmlui/handle/10630/10204
