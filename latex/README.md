@@ -5,8 +5,7 @@
 2. (Optional) If you are not going to write your dissertation in English (or some part must be in another language), 
 you will also need to install language and font packages, for example: 
 <pre><code>sudo apt-get install texlive-lang-spanish</code></pre>
-3. Editor: I strongly recommend using a latex environment to edit your files, specially if you are a starting with latex.
-TexMaker works pretty good. 
+3. Editor: I strongly recommend using a latex environment to edit your files, specially if you are a starting with latex. I like emacs, but TexMaker also works pretty good. 
 <pre><code>sudo apt-get install texmaker</code></pre>
 4. Compilation: The pdf document can be created using compile.sh script. The script compiles the latex files and bibtex references. 
 <pre><code>./compile.sh</code></pre>
