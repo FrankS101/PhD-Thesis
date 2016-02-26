@@ -19,3 +19,17 @@ This thesis has been written adapting the TeXiS template, a LaTeX template for w
 The complete TeXiS package can be obtained from http://gaia.fdi.ucm.es/projects/texis/. 
 TeXis is distributed under the same conditions of the LaTeX Project Public License (http://www.latex-project.org/lppl.txt). 
 The complete license is available in http://creativecommons.org/licenses/by-sa/3.0/legalcode 
+
+_Contact:_ Francisco J. Pulido (@FrankS101, <francis@lcc.uma.es>)
+
+Please cite using the following BibTex entry:
+
+```
+@phdthesis{pulido2015phd,
+  title  = {New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems},
+  author = {Pulido, Francisco-Javier},
+  school = {University of M\'{a}laga, Spain},
+  year   = 2015,
+  Url    = {http://riuma.uma.es/xmlui/handle/10630/10204}
+}
+```
