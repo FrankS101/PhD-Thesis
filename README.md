@@ -7,6 +7,14 @@ _Mirrors:_
 - http://riuma.uma.es/xmlui/handle/10630/10204
 - http://www.lcc.uma.es/~francis/
 
+## Why this can be useful to you?
+
+Become a PhD in Computer Science (or any other field) is never an easy path. I believe Open Research will make science more transparent and reproducible. Have you ever seen a new algorithm or technique and wanted to compare it to your own approach? Did you have to implement that algorithm yourself? and what about LaTeX? You will end up loving it but it will not be an easy path either.
+
+The aim of publishing the source code, LaTeX sources of my dissertation, and even the presentation I used to defend my PhD has a twofold purpose: on one hand, provide an example of a finished PhD to those who can benefit from it, and on the other hand, pave the way for further improvements to the papers that have resulted in this thesis. Having already the source code may help you to extend, improve, criticize or learn from this work.
+
+## License and contact
+
 _License:_ Creative Commons Attribution-NonCommercial-NoDerivs License
 
 _Contact:_ Francisco J. Pulido (@FrankS101, <francis@lcc.uma.es>)
