@@ -1,7 +1,3 @@
-## Why this can be useful to me?
-
-Become a PhD in Computer Science (or any other field) is never an easy path. I believe Open Research will make science more transparent and reproducible. Have you ever seen a new algorithm or technique and wanted to compare it to your own approach? The aim of publishing the dissertation, source code and even the presentation I used to defend my PhD has a twofold purpose: on one hand, provide an example of a finished PhD to those who can benefit from it, and on the other hand, pave the way for further improvements to the papers that have resulted in this thesis. Having already the source code may help you to extend, improve, criticize or learn from this work.
-
 ## Why have I used Lisp?
 
 The LISP programming language was devised as the programming language for Artificial Intelligence research. Nowadays, the functional programming is getting pretty popular, being adopted by the mainstream programming languages such as Java, C++ or Python (actually, Python supports all of Lisp's essential features except Macros). So, why not functional programming? You will learn a new programming paradigm, protoype fast, write short and concise code, and along the way, become a better programmer in languages you already know.
