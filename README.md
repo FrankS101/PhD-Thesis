@@ -13,6 +13,8 @@ Become a PhD in Computer Science (or any other field) is never an easy path. I b
 
 The aim of publishing the source code, LaTeX sources of my dissertation, and even the presentation I used to defend my PhD has a twofold purpose: on one hand, provide an example of a finished PhD to those who can benefit from it, and on the other hand, pave the way for further improvements to the papers that have resulted in this thesis. Having already the source code may help you to extend, improve, criticize or learn from this work.
 
+## License and contact
+
 _License:_ Creative Commons Attribution-NonCommercial-NoDerivs License
 
 _Contact:_ Francisco J. Pulido (@FrankS101, <francis@lcc.uma.es>)
