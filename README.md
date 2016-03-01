@@ -1,7 +1,7 @@
 New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Shortest Path Problems
 ============================
 
-PhD dissertation, Francisco J. Pulido, defended on July 7, 2015 in the University of Málaga (Spain) and supervised by Dr. Lawrence Mandow.
+PhD dissertation, Francisco J. Pulido, defended on July 7, 2015, in the Department of Computer Science and Programming Languages, University of Málaga (Spain). Supervised by Dr. Lawrence Mandow.
 
 _Mirrors:_ 
 - http://riuma.uma.es/xmlui/handle/10630/10204
