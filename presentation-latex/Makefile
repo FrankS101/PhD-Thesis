@@ -11,7 +11,7 @@ $(TEXFILE).pdf: $(TEXFILE).tex
 	# Initial run
 	pdflatex $(TEXFILE)
 
-	# Recompile if instructed
+	# Recompile if necessary
 	@if(grep "Rerun" $(TEXFILE).log > /dev/null);\
 	then \
 		pdflatex $(TEXFILE); \
@@ -23,7 +23,7 @@ $(NOTES).pdf: $(TEXFILE).tex
 	# Initial run
 	pdflatex -jobname $(NOTES) $(TEXFILE) 
 
-	# Recompile if instructed
+	# Recompile if necessary
 	@if(grep "Rerun" $(NOTES).log > /dev/null);\
 	then \
 		pdflatex -jobname $(NOTES) $(TEXFILE); \
