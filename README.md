@@ -4,7 +4,7 @@ New Techniques and Algorithms for Multiobjective and Lexicographic Goal-Based Sh
 PhD dissertation, Francisco J. Pulido, defended on July 7, 2015, in the Department of Computer Science and Programming Languages, University of Málaga (Spain). Supervised by Dr. Lawrence Mandow.
 
 _Mirrors:_ 
-- http://riuma.uma.es/xmlui/handle/10630/10204
+- https://riuma.uma.es/xmlui/bitstream/handle/10630/10204/TD_Pulido_Arrebola.pdf?sequence=3&isAllowed=y
 - http://www.lcc.uma.es/~francis/
 
 ## Why this can be useful to you?
